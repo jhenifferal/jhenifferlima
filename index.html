@@ -600,21 +600,21 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
         </aside>
         <div class="finder-main">
         <div class="vidgrid" id="vidgrid">
-      <div class="vcard" data-id="1189236915" data-niche="maquiagem"><img loading="lazy" src="images/video-make-onibus.jpg" alt="Make gravada no ônibus"/></div>
-      <div class="vcard" data-id="1195825121" data-niche="skincare"><img loading="lazy" src="images/video-review-creamy.jpg" alt="Review Calming Creamy"/></div>
-      <div class="vcard" data-id="1189236926" data-niche="maquiagem"><img loading="lazy" src="images/video-apresentacao-produtos.jpg" alt="Apresentação de produtos"/></div>
-      <div class="vcard" data-id="1189236899" data-niche="unboxing"><img loading="lazy" src="images/video-unboxing-dior.jpg" alt="Unboxing produtos Dior"/></div>
-      <div class="vcard" data-id="1199466857" data-niche="unboxing"><img loading="lazy" src="images/video-unboxing-dove.jpg" alt="Unboxing Dove UV Repair & Glow + Ferúlico"/></div>
-      <div class="vcard" data-id="1189226824" data-niche="ugc"><img loading="lazy" src="images/video-ugc-bigboom.jpg" alt="UGC institucional · BigBoom"/></div>
-      <div class="vcard" data-id="1194501100" data-niche="ugc"><img loading="lazy" src="images/video-ugc-apresentacao.jpg" alt="UGC · Apresentação do Produto"/></div>
-      <div class="vcard" data-id="1189232679" data-niche="haircare"><img loading="lazy" src="images/video-elseve-colageno.jpg" alt="Teste Elseve Colágeno Lifter"/></div>
-      <div class="vcard" data-id="1189226790" data-niche="lifestyle"><img loading="lazy" src="images/video-treino-creatina.jpg" alt="Treino com creatina BigBoom"/></div>
-      <div class="vcard" data-id="1189226828" data-niche="lifestyle"><img loading="lazy" src="images/video-vlog-produtos.jpg" alt="Vlog com produtos do dia"/></div>
-      <div class="vcard" data-id="1205788376" data-niche="skincare"><img loading="lazy" src="images/video-skincare.jpg" alt="Skincare"/></div>
-      <div class="vcard" data-id="1205790069" data-niche="maquiagem"><img loading="lazy" src="images/video-makeupwithme.jpg" alt="Make up With Me"/></div>
-      <div class="vcard" data-id="1205791947" data-niche="gastronomia"><img loading="lazy" src="images/video-gastronomia.jpg" alt="Gastronomia"/></div>
-      <div class="vcard" data-id="1205792855" data-niche="unboxing"><img loading="lazy" src="images/video-unboxing-souu-2.jpg" alt="Unboxing Souu"/></div>
-      <div class="vcard" data-id="1205789379" data-niche="lifestyle"><img loading="lazy" src="images/video-arrume-se-comigo.jpg" alt="Arrume-se comigo"/></div>
+      <div class="vcard" data-id="1189236915" data-niche="maquiagem"><img alt="Make gravada no ônibus"/></div>
+      <div class="vcard" data-id="1195825121" data-niche="skincare"><img alt="Review Calming Creamy"/></div>
+      <div class="vcard" data-id="1189236926" data-niche="maquiagem"><img alt="Apresentação de produtos"/></div>
+      <div class="vcard" data-id="1189236899" data-niche="unboxing"><img alt="Unboxing produtos Dior"/></div>
+      <div class="vcard" data-id="1199466857" data-niche="unboxing"><img alt="Unboxing Dove UV Repair & Glow + Ferúlico"/></div>
+      <div class="vcard" data-id="1189226824" data-niche="ugc"><img alt="UGC institucional · BigBoom"/></div>
+      <div class="vcard" data-id="1194501100" data-niche="ugc"><img alt="UGC · Apresentação do Produto"/></div>
+      <div class="vcard" data-id="1189232679" data-niche="haircare"><img alt="Teste Elseve Colágeno Lifter"/></div>
+      <div class="vcard" data-id="1189226790" data-niche="lifestyle"><img alt="Treino com creatina BigBoom"/></div>
+      <div class="vcard" data-id="1189226828" data-niche="lifestyle"><img alt="Vlog com produtos do dia"/></div>
+      <div class="vcard" data-id="1205788376" data-niche="skincare"><img alt="Skincare"/></div>
+      <div class="vcard" data-id="1205790069" data-niche="maquiagem"><img alt="Make up With Me"/></div>
+      <div class="vcard" data-id="1205791947" data-niche="gastronomia"><img alt="Gastronomia"/></div>
+      <div class="vcard" data-id="1205792855" data-niche="unboxing"><img alt="Unboxing Souu"/></div>
+      <div class="vcard" data-id="1205789379" data-niche="lifestyle"><img alt="Arrume-se comigo"/></div>
     </div>
         <p class="folder-hint" id="folderHint"></p>
         </div>
@@ -748,12 +748,27 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
     });
   },{threshold:0.35});
   cards.forEach(function(c){ vObs.observe(c); });
+
+  // ---- Capas dos vídeos: puxadas direto do Vimeo (oEmbed), sem arquivos locais ----
+  function loadThumb(card){
+    if(card.dataset.thumbed) return; card.dataset.thumbed='1';
+    var id=card.getAttribute('data-id');
+    fetch('https://vimeo.com/api/oembed.json?url=https://vimeo.com/'+id+'&width=640')
+      .then(function(r){return r.json();})
+      .then(function(d){ var im=card.querySelector('img'); if(im&&d.thumbnail_url){ im.src=d.thumbnail_url; } })
+      .catch(function(){});
+  }
+  var thumbObs=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ loadThumb(e.target); thumbObs.unobserve(e.target); } });
+  },{rootMargin:'400px 0px'});
+  cards.forEach(function(c){ thumbObs.observe(c); });
+
   function openFolder(n){
     cards.forEach(function(c){
       var show=(n==='all'||c.getAttribute('data-niche')===n); c.hidden=!show;
       var id=c.getAttribute('data-id'), p=players[id];
       if(!show && p) p.pause().catch(function(){});
-      if(show){ activate(c); var pp=players[id]; if(pp) pp.play().catch(function(){}); }
+      if(show){ loadThumb(c); activate(c); var pp=players[id]; if(pp) pp.play().catch(function(){}); }
     });
     document.querySelectorAll('.side').forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-folder')===n); });
     if(loc) loc.textContent=labels[n]||'Recentes';
