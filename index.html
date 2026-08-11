@@ -216,6 +216,22 @@ img{max-width:100%;}
   border-radius:50%;background:rgba(242,92,162,.94);display:flex;align-items:center;justify-content:center;
   color:#fff;font-size:.95rem;box-shadow:0 6px 16px rgba(0,0,0,.32);transition:.2s;}
 .vcard:hover .pbtn{transform:translate(-50%,-50%) scale(1.08);}
+.vcard .sndbtn{position:absolute;top:.5rem;right:.5rem;z-index:4;width:34px;height:34px;
+  border:0;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  background:rgba(20,12,18,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  color:#fff;font-size:.85rem;line-height:1;transition:.18s ease;-webkit-tap-highlight-color:transparent;}
+.vcard .sndbtn:hover{background:rgba(20,12,18,.78);transform:scale(1.08);}
+.vcard .sndbtn:focus-visible{outline:2px solid #fff;outline-offset:2px;}
+.vcard .sndbtn .on{display:none;}
+.vcard.sound .sndbtn{background:var(--pink);box-shadow:0 4px 14px -4px rgba(242,92,162,.9);}
+.vcard.sound .sndbtn .on{display:block;}
+.vcard.sound .sndbtn .off{display:none;}
+.vcard.sound{border-color:var(--pink);box-shadow:0 0 0 2px var(--pink),var(--shadow);}
+@media(prefers-reduced-motion:reduce){.vcard .sndbtn{transition:none;}}
+@media(max-width:640px){
+  /* alvo de toque confortavel no celular (minimo recomendado ~44px) */
+  .vcard .sndbtn{width:42px;height:42px;font-size:1rem;top:.4rem;right:.4rem;}
+}
 .vcard .vcat{font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.85);font-weight:700;}
 .vcard .vtt{font-size:.76rem;font-weight:600;color:#fff;line-height:1.25;margin-top:.12rem;}
 .vid{display:inline-flex;align-items:center;gap:.5rem;background:var(--ink);color:#fff;border-radius:999px;
@@ -864,7 +880,9 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
   var lastFocus=null;
   function openVideo(id,label){ if(!modal) return; mtitle.textContent=label||'Portfólio';
     lastFocus=document.activeElement;
-    // pausa os players da grade para nao concorrer com o video do popup
+    // pausa e silencia os players da grade para nao concorrer com o video do popup
+    if(typeof mutarTodos==='function') mutarTodos(null);
+    comSom=null;
     Object.keys(players).forEach(function(k){ try{ players[k].pause(); }catch(e){} });
     mbody.innerHTML='<div class="vplayer"><iframe title="'+(label||'Portfólio')+'" src="https://player.vimeo.com/video/'+id+'?autoplay=1&title=0&byline=0&portrait=0&badge=0&dnt=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>';
     modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
@@ -879,6 +897,69 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
     mbody.innerHTML=''; document.body.style.overflow='';
     if(lastFocus&&lastFocus.focus) lastFocus.focus();
     applyPlayback(); }
+  // ---- Som direto na grade, sem precisar abrir o popup ----
+  var comSom=null;
+  function mutarTodos(exceto){
+    cards.forEach(function(c){
+      var id=c.getAttribute('data-id');
+      if(id===exceto) return;
+      c.classList.remove('sound');
+      var b=c.querySelector('.sndbtn');
+      if(b){ b.setAttribute('aria-pressed','false'); b.setAttribute('aria-label','Ativar som'); }
+      var pl=players[id]; if(pl){ pl.setMuted(true).catch(function(){}); }
+    });
+  }
+  function recriarComAudio(card,id){
+    var ifr=card.querySelector('iframe'); if(!ifr || card.dataset.audio) return;
+    card.dataset.audio='1';
+    var novo=document.createElement('iframe');
+    novo.src='https://player.vimeo.com/video/'+id+'?autoplay=1&loop=1&muted=0&controls=0&playsinline=1&title=0&byline=0&portrait=0&badge=0&dnt=1';
+    novo.allow='autoplay; fullscreen; picture-in-picture';
+    novo.setAttribute('allowfullscreen',''); novo.setAttribute('title', ifr.getAttribute('title')||'');
+    novo.style.pointerEvents='none';
+    card.replaceChild(novo, ifr);
+    if(window.Vimeo){ var np=new Vimeo.Player(novo); players[id]=np;
+      np.setVolume(1).catch(function(){}); }
+  }
+  function alternarSom(card,btn){
+    var id=card.getAttribute('data-id');
+    activate(card);
+    var pl=players[id];
+    var ligar = comSom!==id;
+    // se o SDK do Vimeo nao carregou (bloqueador, rede), vamos direto pro plano B
+    if(!pl){
+      mutarTodos(ligar?id:null);
+      var b0=card.querySelector('.sndbtn');
+      if(ligar){ comSom=id; card.classList.add('sound');
+        if(b0){ b0.setAttribute('aria-pressed','true'); b0.setAttribute('aria-label','Desativar som'); }
+        recriarComAudio(card,id);
+      } else { comSom=null; card.classList.remove('sound');
+        if(b0){ b0.setAttribute('aria-pressed','false'); b0.setAttribute('aria-label','Ativar som'); } }
+      return;
+    }
+    mutarTodos(ligar?id:null);
+    if(ligar){
+      comSom=id; card.classList.add('sound');
+      btn.setAttribute('aria-pressed','true'); btn.setAttribute('aria-label','Desativar som');
+      pl.setMuted(false).catch(function(){});
+      pl.setVolume(1).catch(function(){});
+      pl.play().catch(function(){});
+      var im=card.querySelector('img'); if(im) im.style.opacity='0';
+      // o modo background do Vimeo pode ignorar o unmute pela API.
+      // conferimos e, se continuar mudo, recriamos o player ja com audio.
+      setTimeout(function(){
+        if(comSom!==id || card.dataset.audio) return;
+        pl.getMuted().then(function(m){
+          if(m) recriarComAudio(card,id);
+        }).catch(function(){ recriarComAudio(card,id); });
+      },700);
+    } else {
+      comSom=null; card.classList.remove('sound');
+      btn.setAttribute('aria-pressed','false'); btn.setAttribute('aria-label','Ativar som');
+      pl.setMuted(true).catch(function(){});
+    }
+  }
+
   cards.forEach(function(c){
     c.setAttribute('role','button'); c.setAttribute('tabindex','0');
     var lbl=c.querySelector('img');
@@ -886,6 +967,19 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
     function abrir(){ openVideo(c.getAttribute('data-id'), labels[c.getAttribute('data-niche')]||'Portfólio'); }
     c.addEventListener('click',abrir);
     c.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); abrir(); } });
+
+    var btn=document.createElement('button');
+    btn.type='button'; btn.className='sndbtn';
+    btn.setAttribute('aria-pressed','false'); btn.setAttribute('aria-label','Ativar som');
+    btn.innerHTML='<span class="off" aria-hidden="true">🔇</span><span class="on" aria-hidden="true">🔊</span>';
+    // impede que o clique no botao suba pro card e abra o popup
+    ['click','keydown'].forEach(function(ev){
+      btn.addEventListener(ev,function(e){
+        if(ev==='keydown' && e.key!=='Enter' && e.key!==' ') return;
+        e.preventDefault(); e.stopPropagation(); alternarSom(c,btn);
+      });
+    });
+    c.appendChild(btn);
   });
   if(modal){ modal.querySelector('.vmodal-back').addEventListener('click',closeVideo);
     modal.querySelector('.vmodal-x').addEventListener('click',closeVideo);
