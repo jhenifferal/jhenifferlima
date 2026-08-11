@@ -12,12 +12,17 @@
 <meta property="og:locale" content="pt_BR"/>
 <meta property="og:locale:alternate" content="en_US"/>
 <meta property="og:locale:alternate" content="es_ES"/>
-<!-- Troque a URL abaixo pelo endereco final do kit e da imagem de capa (1200x630px) -->
-<!-- <meta property="og:url" content="https://SEUSITE.com/"/> -->
-<!-- <meta property="og:image" content="https://SEUSITE.com/capa-midiakit.jpg"/> -->
+<meta property="og:url" content="https://jhenifferlima.vercel.app/"/>
+<!-- Suba capa-midiakit.jpg (1200x630px) na raiz do projeto, junto do index.html -->
+<meta property="og:image" content="https://jhenifferlima.vercel.app/capa-midiakit.jpg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="Jheniffer Lima · Mídia Kit 2026"/>
+<link rel="canonical" href="https://jhenifferlima.vercel.app/"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Jheniffer Lima · Media Kit 2026"/>
 <meta name="twitter:description" content="UGC Creator &amp; Nano Influencer · Beauty, skincare &amp; lifestyle · Santa Catarina, Brazil"/>
+<meta name="twitter:image" content="https://jhenifferlima.vercel.app/capa-midiakit.jpg"/>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%9F%3C/text%3E%3C/svg%3E"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -36,6 +41,9 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
+/* impede o microbalanco lateral causado pelos elementos rotacionados.
+   'clip' (e nao 'hidden') preserva o position:sticky da .menubar */
+body{overflow-x:clip;}
 body{
   font-family:'Inter',system-ui,sans-serif;color:var(--ink);
   -webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden;
@@ -106,7 +114,8 @@ a{color:inherit;text-decoration:none;}
 
 /* ===== polaroid ===== */
 .polaroid{background:#fff;padding:.55rem .55rem 1.7rem;border-radius:6px;box-shadow:var(--shadow);}
-.polaroid img{width:100%;border-radius:3px;object-fit:cover;}
+.polaroid img{width:100%;height:auto;border-radius:3px;object-fit:cover;}
+img{max-width:100%;}
 .polaroid .cap{font-family:'Caveat',cursive;font-size:1.2rem;text-align:center;margin-top:.45rem;color:#6b6470;}
 
 /* ===== HERO ===== */
@@ -232,6 +241,13 @@ a{color:inherit;text-decoration:none;}
 
 /* ===== processo ===== */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;}
+.steps.steps-col{grid-template-columns:1fr;gap:.8rem;margin-top:.9rem;}
+.steps.steps-col .step{padding:.95rem 1.05rem;}
+.steps.steps-col .step .sn{font-size:1.5rem;}
+.steps.steps-col .step h3{font-size:1.02rem;margin:.25rem 0 .35rem;}
+.steps.steps-col .step p{font-size:.8rem;}
+.how h3.fred{font-size:1.5rem;line-height:1.2;}
+.how .sub{font-size:.85rem;color:var(--ink-soft);margin-top:.35rem;}
 .step{background:var(--glass-strong);border:1px solid rgba(255,255,255,.7);border-radius:var(--radius);
   padding:1.4rem;box-shadow:var(--shadow);}
 .step .sn{font-family:'Fraunces',serif;font-weight:700;font-size:2rem;line-height:1;
@@ -293,7 +309,8 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
 .vmodal-back{position:absolute;inset:0;background:rgba(22,12,18,.62);backdrop-filter:blur(3px)}
 .vmodal .win{position:relative;width:min(92vw,392px);box-shadow:0 24px 60px -12px rgba(0,0,0,.55);animation:vpop .22s ease}
 @keyframes vpop{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:none}}
-.vmodal-x{position:absolute;right:.45rem;top:50%;transform:translateY(-50%);background:transparent;border:0;color:var(--ink-soft);font-size:1.35rem;line-height:1;cursor:pointer;padding:.05rem .35rem;border-radius:8px}
+.vmodal .win-bar{position:relative;z-index:2}
+.vmodal-x{position:absolute;right:.45rem;top:50%;transform:translateY(-50%);z-index:3;background:transparent;border:0;color:var(--ink-soft);font-size:1.35rem;line-height:1;cursor:pointer;padding:.05rem .35rem;border-radius:8px}
 .vmodal-x:hover{background:rgba(0,0,0,.08);color:var(--ink)}
 .vmodal-body{padding:0;background:#000;overflow:hidden}
 .vplayer{position:relative;width:100%;aspect-ratio:9/16;max-height:74vh}
@@ -443,11 +460,9 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
     <nav class="menu-nav" id="menuNav">
       <a href="#sobre">Sobre</a>
       <a href="#metricas">Métricas</a>
-      <a href="#nano">Nano</a>
       <a href="#nichos">Nichos</a>
       <a href="#portfolio">Portfólio</a>
       <a href="#entrego">Entrego</a>
-      <a href="#processo">Processo</a>
       <a href="#marcas">Marcas</a>
       <a href="#contato" class="cta">Contato</a>
     </nav>
@@ -472,9 +487,9 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
       </div>
         <div class="hero-right reveal">
           <div class="pile">
-            <figure class="snap s-a"><img src="hero-1-gloss.jpg" alt="Jheniffer passando gloss"/></figure>
-            <figure class="snap s-b"><img src="hero-2-sorrindo.jpg" alt="Jheniffer sorrindo"/></figure>
-            <figure class="snap s-c"><img src="hero-3-produto.jpg" alt="Jheniffer com o produto"/></figure>
+            <figure class="snap s-a"><img src="hero-1-gloss.jpg" width="520" height="389" decoding="async" fetchpriority="high" alt="Jheniffer passando gloss"/></figure>
+            <figure class="snap s-b"><img src="hero-2-sorrindo.jpg" width="520" height="389" decoding="async" fetchpriority="high" alt="Jheniffer sorrindo"/></figure>
+            <figure class="snap s-c"><img src="hero-3-produto.jpg" width="520" height="389" decoding="async" fetchpriority="high" alt="Jheniffer com o produto"/></figure>
           </div>
           <div class="note pink">Sua marca recomendada por uma <em>voz</em> que a audiência realmente ouve e responde 💗</div>
         </div>
@@ -486,18 +501,18 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
     <span class="scene-tag reveal"><b>01</b> · Sobre</span>
     <div class="cols s12">
       <div class="stack reveal">
-        <div class="polaroid" style="transform:rotate(-3deg);"><img src="sobre-jheni.jpg" alt="Jheniffer"/><div class="cap">conheça a Jheni</div></div>
+        <div class="polaroid" style="transform:rotate(-3deg);"><img src="sobre-jheni.jpg" width="640" height="1137" loading="lazy" decoding="async" alt="Jheniffer"/><div class="cap">conheça a Jheni</div></div>
       </div>
       <div class="stack reveal">
         <div class="win">
           <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-title">sobre_a_jheni.txt</span></div>
           <div class="win-body">
-            <p class="about-p"><span class="drop">Pode me chamar de Jheni.</span> Tenho 27 anos, sou de São José (a famosa Grande Floripa, em Santa Catarina), e tenho um talento especial pra achar graça e beleza nas coisas mais bobas. Na franja amarrotada de quem acabou de acordar, na luz do sol que invade a janela todo amanhecer, no perrengue do dia que vira história engraçada lá na frente.</p>
-            <p class="about-p">Comecei pela maquiagem, por puro amor. Foi ela que me levou ao skincare, que virou um cuidado diário comigo mesma, com dermatologista, pesquisa e muita descoberta no meio do caminho. O fitness chegou depois e hoje faz parte da rotina, vivido no meu ritmo e sem drama.</p>
-            <p class="about-p">Durante o dia eu trabalho CLT, por isso crio nas horas (in)úteis: o intervalo, o caminho de volta, a noite antes de dormir, o dia de folga e o fim de semana. Faço porque amo criar e me comunicar com a minha comunidade. Em vez de reclamar da correria, eu acho o encanto dela. Gosto de mostrar pra vocês que o simples pode ser especial, e que a vida boa cabe na vida real, com franja amarrotada e tudo.</p>
+            <p class="about-p"><span class="drop">Pode me chamar de Jheni.</span> Tenho 27 anos, sou de São José (a famosa Grande Floripa, em Santa Catarina), sou apaixonada por uma lente de câmera e tenho um talento especial pra achar graça e beleza nas coisas simples da rotina.</p>
+            <p class="about-p">Hoje meus nichos conversam com quem eu sou: skincare, maquiagem e o mundo da beleza sempre estiveram presentes no meu dia a dia, e sempre estive em busca de entender mais sobre o assunto.</p>
+            <p class="about-p">Além de criadora de conteúdo, tenho a rotina de uma CLT, o que conversa muito com a minha comunidade, que gosta de acompanhar como encaixar certas coisas na rotina corrida, sabe?! Aí entra o lifestyle, que gera uma identificação enorme com quem me acompanha.</p>
           </div>
         </div>
-        <div class="note">Quando eu indico algo, a minha comunidade acredita, porque sabe que eu falo com verdade, e é essa confiança que transforma indicação em vontade de comprar.</div>
+        <div class="note">Faço porque amo criar e me comunicar, e hoje conquistei uma comunidade incrível.</div>
       </div>
     </div>
   </section>
@@ -559,31 +574,9 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
     <div class="note mint reveal" style="max-width:380px;margin:1.4rem auto 0;transform:rotate(-1.5deg);">Não é sobre quantos me seguem. É sobre quantos param, confiam e vão atrás 🌟</div>
   </section>
 
-  <!-- NANO -->
-  <section class="scene" id="nano">
-    <span class="scene-tag reveal"><b>03</b> · Por que Nano</span>
-    <div class="cols s21">
-      <div class="win reveal">
-        <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-title">por_que_nano.txt</span></div>
-        <div class="win-body">
-          <h3 class="fred" style="font-size:1.4rem;line-height:1.2;margin-bottom:.8rem;">1.284 seguidores que <span style="color:var(--pink)">confiam</span> valem mais do que 50 mil que ignoram</h3>
-          <p class="about-p" style="font-size:.9rem;">No universo da influência digital, tamanho não é o único critério que importa. Estudos de plataformas como Later, Hootsuite e Nielsen mostram que contas com menos de 10 mil seguidores costumam gerar taxas de engajamento <strong>consideravelmente mais altas</strong> do que perfis maiores, porque a relação com a audiência é mais próxima e pessoal.</p>
-          <p class="about-p" style="font-size:.9rem;">Minha audiência é local, feminina, adulta e principalmente <strong>ativa</strong>. Conheço as seguidoras pelo nome, respondo cada mensagem e sei o que a comunidade quer ouvir. Isso cria um nível de confiança que nenhuma campanha paga consegue comprar.</p>
-          <p style="font-size:.72rem;color:var(--ink-soft);font-style:italic;">* Dados baseados em relatórios de benchmarking de influência digital (2023 a 2024).</p>
-        </div>
-      </div>
-      <div class="nano-cards reveal">
-        <div class="nano-c"><h4>🎯 Alcance preciso</h4><p>Público concentrado na Grande Floripa. Ideal pra marcas da região e pra quem é de fora e quer entrar no mercado de SC.</p></div>
-        <div class="nano-c"><h4>💬 Conversa real</h4><p>Eu recomendo e a audiência responde de verdade. Sua marca entra nesse diálogo.</p></div>
-        <div class="nano-c"><h4>🌱 Audiência real</h4><p>100% orgânica, construída sem impulsionamento pago.</p></div>
-        <div class="nano-c"><h4>🛍️ Público comprador</h4><p>Mulheres de 25 a 44 anos, faixa com renda e decisão de compra.</p></div>
-      </div>
-    </div>
-  </section>
-
   <!-- NICHOS -->
   <section class="scene" id="nichos">
-    <span class="scene-tag reveal"><b>04</b> · Nichos</span>
+    <span class="scene-tag reveal"><b>03</b> · Nichos</span>
     <div class="win reveal" style="margin-top:1.1rem;">
       <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-title">o que você vai encontrar</span></div>
       <div class="win-body">
@@ -609,7 +602,7 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
 
   <!-- PORTFOLIO -->
   <section class="scene" id="portfolio">
-    <span class="scene-tag reveal"><b>05</b> · Portfólio</span>
+    <span class="scene-tag reveal"><b>04</b> · Portfólio</span>
     <h2 class="fred reveal" style="font-size:1.5rem;margin:.9rem 0 1.1rem;">Conteúdos que <span style="color:var(--pink)">conectam</span> 📸</h2>
     <div class="win finder reveal">
       <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-title" id="finderLoc">Recentes</span><span class="win-views"><i class="vw active"></i><i class="vw"></i></span></div>
@@ -627,22 +620,22 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
         </aside>
         <div class="finder-main">
         <div class="vidgrid" id="vidgrid">
-      <div class="vcard" data-id="1189236915" data-niche="maquiagem"><img alt="Make gravada no ônibus"/></div>
-      <div class="vcard" data-id="1189236926" data-niche="maquiagem"><img alt="Apresentação de produtos"/></div>
-      <div class="vcard" data-id="1205790069" data-niche="maquiagem"><img alt="Make up With Me"/></div>
-      <div class="vcard" data-id="1195825121" data-niche="skincare"><img alt="Review Calming Creamy"/></div>
-      <div class="vcard" data-id="1205788376" data-niche="skincare"><img alt="Skincare"/></div>
-      <div class="vcard" data-id="1189232679" data-niche="haircare"><img alt="Teste Elseve Colágeno Lifter"/></div>
-      <div class="vcard" data-id="1213586737" data-niche="haircare"><img alt="Retoque Mágico"/></div>
-      <div class="vcard" data-id="1189226824" data-niche="ugc"><img alt="UGC institucional · BigBoom"/></div>
-      <div class="vcard" data-id="1194501100" data-niche="ugc"><img alt="UGC · Apresentação do Produto"/></div>
-      <div class="vcard" data-id="1189236899" data-niche="unboxing"><img alt="Unboxing produtos Dior"/></div>
-      <div class="vcard" data-id="1199466857" data-niche="unboxing"><img alt="Unboxing Dove UV Repair & Glow + Ferúlico"/></div>
-      <div class="vcard" data-id="1205792855" data-niche="unboxing"><img alt="Unboxing Souu"/></div>
-      <div class="vcard" data-id="1189226790" data-niche="lifestyle"><img alt="Treino com creatina BigBoom"/></div>
-      <div class="vcard" data-id="1189226828" data-niche="lifestyle"><img alt="Vlog com produtos do dia"/></div>
-      <div class="vcard" data-id="1205789379" data-niche="lifestyle"><img alt="Arrume-se comigo"/></div>
-      <div class="vcard" data-id="1205791947" data-niche="gastronomia"><img alt="Gastronomia"/></div>
+      <div class="vcard" data-id="1189236915" data-niche="maquiagem"><img width="720" height="1280" loading="lazy" decoding="async" alt="Make gravada no ônibus"/></div>
+      <div class="vcard" data-id="1189236926" data-niche="maquiagem"><img width="720" height="1280" loading="lazy" decoding="async" alt="Apresentação de produtos"/></div>
+      <div class="vcard" data-id="1205790069" data-niche="maquiagem"><img width="720" height="1280" loading="lazy" decoding="async" alt="Make up With Me"/></div>
+      <div class="vcard" data-id="1195825121" data-niche="skincare"><img width="720" height="1280" loading="lazy" decoding="async" alt="Review Calming Creamy"/></div>
+      <div class="vcard" data-id="1205788376" data-niche="skincare"><img width="720" height="1280" loading="lazy" decoding="async" alt="Skincare"/></div>
+      <div class="vcard" data-id="1189232679" data-niche="haircare"><img width="720" height="1280" loading="lazy" decoding="async" alt="Teste Elseve Colágeno Lifter"/></div>
+      <div class="vcard" data-id="1213586737" data-niche="haircare"><img width="720" height="1280" loading="lazy" decoding="async" alt="Retoque Mágico"/></div>
+      <div class="vcard" data-id="1189226824" data-niche="ugc"><img width="720" height="1280" loading="lazy" decoding="async" alt="UGC institucional · BigBoom"/></div>
+      <div class="vcard" data-id="1194501100" data-niche="ugc"><img width="720" height="1280" loading="lazy" decoding="async" alt="UGC · Apresentação do Produto"/></div>
+      <div class="vcard" data-id="1189236899" data-niche="unboxing"><img width="720" height="1280" loading="lazy" decoding="async" alt="Unboxing produtos Dior"/></div>
+      <div class="vcard" data-id="1199466857" data-niche="unboxing"><img width="720" height="1280" loading="lazy" decoding="async" alt="Unboxing Dove UV Repair & Glow + Ferúlico"/></div>
+      <div class="vcard" data-id="1205792855" data-niche="unboxing"><img width="720" height="1280" loading="lazy" decoding="async" alt="Unboxing Souu"/></div>
+      <div class="vcard" data-id="1189226790" data-niche="lifestyle"><img width="720" height="1280" loading="lazy" decoding="async" alt="Treino com creatina BigBoom"/></div>
+      <div class="vcard" data-id="1189226828" data-niche="lifestyle"><img width="720" height="1280" loading="lazy" decoding="async" alt="Vlog com produtos do dia"/></div>
+      <div class="vcard" data-id="1205789379" data-niche="lifestyle"><img width="720" height="1280" loading="lazy" decoding="async" alt="Arrume-se comigo"/></div>
+      <div class="vcard" data-id="1205791947" data-niche="gastronomia"><img width="720" height="1280" loading="lazy" decoding="async" alt="Gastronomia"/></div>
     </div>
         <p class="folder-hint" id="folderHint"></p>
         </div>
@@ -651,49 +644,37 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
     <p style="font-size:.78rem;font-style:italic;color:var(--ink-soft);margin-top:1rem;">* Alguns conteúdos foram criados de forma independente, sem parceria comercial.</p>
   </section>
 
-  <!-- ENTREGO -->
+  <!-- ENTREGO + COMO TRABALHO -->
   <section class="scene" id="entrego">
-    <span class="scene-tag reveal"><b>06</b> · O que entrego</span>
+    <span class="scene-tag reveal"><b>05</b> · O que entrego</span>
     <div class="cols s21">
       <div class="win reveal">
         <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-title">o que sua marca recebe</span></div>
         <div class="win-body">
           <ul class="deliver">
-            <li><span class="no">01</span><div><div class="dt">Stories com engajamento</div><div class="dd">Sua marca entra numa conversa que já está acontecendo, do jeito mais natural possível.</div></div></li>
-            <li><span class="no">02</span><div><div class="dt">Reels autênticos</div><div class="dd">Cerca de 76% das visualizações do perfil. Conteúdo que a audiência assiste até o fim porque parece com a vida dela.</div></div></li>
+            <li><span class="no">01</span><div><div class="dt">Stories com engajamento</div><div class="dd">Sua marca entra numa conversa que já está acontecendo.</div></div></li>
+            <li><span class="no">02</span><div><div class="dt">Reels autênticos</div><div class="dd">Cerca de 76% das visualizações do perfil. A audiência assiste até o fim.</div></div></li>
             <li><span class="no">03</span><div><div class="dt">Feed com texto que conecta</div><div class="dd">Carrosséis e fotos com escrita que convence. Eu também escrevo, não só gravo.</div></div></li>
-            <li><span class="no">04</span><div><div class="dt">Review honesto</div><div class="dd">Produto em uso na minha rotina, com opinião real no meu estilo. O tipo que a audiência leva a sério.</div></div></li>
-            <li><span class="no">05</span><div><div class="dt">UGC pra sua marca usar</div><div class="dd">Conteúdo sob medida (com ou sem rosto), entregue pronto pros seus canais e mídia paga. Direitos conforme contrato.</div></div></li>
+            <li><span class="no">04</span><div><div class="dt">Review honesto</div><div class="dd">Produto em uso na minha rotina, com opinião real no meu estilo.</div></div></li>
+            <li><span class="no">05</span><div><div class="dt">UGC pra sua marca usar</div><div class="dd">Conteúdo sob medida, pronto pros seus canais e mídia paga. Direitos conforme contrato.</div></div></li>
           </ul>
         </div>
       </div>
-      <div class="gains reveal">
-        <h3>O que sua marca ganha</h3>
+      <div class="how reveal">
+        <h3 class="fred">Como eu <span style="color:var(--pink)">trabalho</span></h3>
         <div class="sub">Não vendo seguidores. Vendo confiança.</div>
-        <ul>
-          <li><div class="gt">Influência regional forte em SC</div><div class="gd">São José, Palhoça e Floripa concentram meu público. E se sua marca não é daqui, eu sou a porta de entrada pro mercado de SC.</div></li>
-          <li><div class="gt">Sua marca vira conversa, não anúncio</div><div class="gd">Quando compartilho algo que gostei, a pergunta seguinte já chega: "onde compra?". Sua marca é comentada, perguntada e recomendada.</div></li>
-          <li><div class="gt">Sua marca descoberta por gente nova</div><div class="gd">Cerca de 66% das visualizações vêm de quem ainda não me segue. Sua marca não fica só na bolha, alcança público novo toda semana.</div></li>
-          <li><div class="gt">Audiência 100% orgânica</div><div class="gd">Sem bots e sem turbinada paga. Cada interação é de gente de verdade.</div></li>
-        </ul>
+        <div class="steps steps-col">
+          <div class="step"><div class="sn">1</div><h3>Alinhamento</h3><p>A gente define o objetivo e os limites da campanha. Quanto mais detalhe, mais o conteúdo sai com a cara da sua marca.</p></div>
+          <div class="step"><div class="sn">2</div><h3>Criação</h3><p>Prazo mínimo de 7 dias pra gravar e editar com calma. Sempre que dá, testo o produto antes. Prazo apertado a gente adapta.</p></div>
+          <div class="step"><div class="sn">3</div><h3>Entrega</h3><p>Material cru ou já editado com legendas, como você preferir. Se quiser, mando o print dos Insights depois.</p></div>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <!-- PROCESSO -->
-  <section class="scene" id="processo">
-    <span class="scene-tag reveal"><b>07</b> · Processo</span>
-    <h2 class="fred reveal" style="font-size:1.5rem;margin:.9rem 0 1.1rem;">Como eu <span style="color:var(--pink)">trabalho</span></h2>
-    <div class="steps reveal">
-      <div class="step"><div class="sn">1</div><h3>Alinhamento</h3><p>Aqui a gente entende o seu objetivo e os seus limites, o que pode e o que não pode. Quanto mais detalhes você me passar, mais o conteúdo sai dentro do que a sua marca busca.</p></div>
-      <div class="step"><div class="sn">2</div><h3>Criação</h3><p>Trabalho com prazo mínimo de 7 dias para criar, executar e editar com calma. Sempre que dá, testo o produto antes de gravar, fica mais fluido e honesto. Se o prazo for apertado, a gente se adapta sem problema.</p></div>
-      <div class="step"><div class="sn">3</div><h3>Entrega</h3><p>A parte mais importante. Entrego o material cru ou já com legendas e edição, do jeito que você preferir. Se a marca quiser, ainda envio o print dos Insights com o desempenho da publicação.</p></div>
     </div>
   </section>
 
   <!-- MARCAS -->
   <section class="scene" id="marcas">
-    <span class="scene-tag reveal"><b>08</b> · Marcas</span>
+    <span class="scene-tag reveal"><b>06</b> · Marcas</span>
     <div class="win reveal" style="margin-top:1.1rem;">
       <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-title">marcas que já confiaram</span></div>
       <div class="win-body">
@@ -716,7 +697,7 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
 
   <!-- CONTATO -->
   <section class="scene" id="contato">
-    <span class="scene-tag reveal"><b>09</b> · Contato</span>
+    <span class="scene-tag reveal"><b>07</b> · Contato</span>
     <h2 class="fred reveal" style="font-size:1.7rem;margin:.9rem 0 1.2rem;">Manda uma <span style="color:var(--pink)">mensagem</span> 💌</h2>
     <div class="contact-grid">
       <div class="win reveal">
@@ -747,6 +728,13 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
 
 <footer>Jheniffer Lima · Mídia Kit 2026 · 🌟</footer>
 
+  <div class="vmodal" id="vmodal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="vmodal-title">
+    <div class="vmodal-back"></div>
+    <div class="win">
+      <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-title" id="vmodal-title">Portfólio</span><button class="vmodal-x" aria-label="Fechar">&times;</button></div>
+      <div class="win-body vmodal-body" id="vmodal-body"></div>
+    </div>
+  </div>
 <script src="https://player.vimeo.com/api/player.js"></script>
 <script>
 (function(){
@@ -826,7 +814,6 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
       var id=c.getAttribute('data-id'), p=players[id];
       if(!show){ if(p) p.pause().catch(function(){}); return; }
       loadThumb(c);
-      if(!isMobile()){ activate(c); var pp=players[id]; if(pp) pp.play().catch(function(){}); }
     });
     document.querySelectorAll('.side').forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-folder')===n); });
     if(loc) loc.textContent=labels[n]||'Recentes';
@@ -835,23 +822,37 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
   document.querySelectorAll('.side').forEach(function(b){ b.addEventListener('click',function(){ openFolder(b.getAttribute('data-folder')); }); });
   openFolder('all');
   var modal=document.getElementById('vmodal'), mbody=document.getElementById('vmodal-body'), mtitle=document.getElementById('vmodal-title');
+  var lastFocus=null;
   function openVideo(id,label){ if(!modal) return; mtitle.textContent=label||'Portfólio';
-    mbody.innerHTML='<div class="vplayer"><iframe src="https://player.vimeo.com/video/'+id+'?autoplay=1&title=0&byline=0&portrait=0&badge=0&dnt=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>';
-    modal.classList.add('open'); document.body.style.overflow='hidden'; }
-  function closeVideo(){ if(!modal) return; modal.classList.remove('open'); mbody.innerHTML=''; document.body.style.overflow=''; }
-  cards.forEach(function(c){ c.addEventListener('click',function(){ openVideo(c.getAttribute('data-id'), labels[c.getAttribute('data-niche')]||'Portfólio'); }); });
+    lastFocus=document.activeElement;
+    // pausa os players da grade para nao concorrer com o video do popup
+    Object.keys(players).forEach(function(k){ try{ players[k].pause(); }catch(e){} });
+    mbody.innerHTML='<div class="vplayer"><iframe title="'+(label||'Portfólio')+'" src="https://player.vimeo.com/video/'+id+'?autoplay=1&title=0&byline=0&portrait=0&badge=0&dnt=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>';
+    modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+    // o iframe do Vimeo rouba o foco ao carregar; recuperamos para o botao fechar,
+    // senao o Esc deixa de funcionar (evento fica preso no iframe de outra origem)
+    var x=modal.querySelector('.vmodal-x');
+    if(x){ x.focus(); [120,400,900].forEach(function(t){ setTimeout(function(){
+      if(modal.classList.contains('open') && document.activeElement &&
+         document.activeElement.tagName==='IFRAME') x.focus(); },t); }); } }
+  function closeVideo(){ if(!modal) return; modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');
+    mbody.innerHTML=''; document.body.style.overflow='';
+    if(lastFocus&&lastFocus.focus) lastFocus.focus();
+    applyPlayback(); }
+  cards.forEach(function(c){
+    c.setAttribute('role','button'); c.setAttribute('tabindex','0');
+    var lbl=c.querySelector('img');
+    c.setAttribute('aria-label','Assistir: '+((lbl&&lbl.getAttribute('alt'))||'vídeo do portfólio'));
+    function abrir(){ openVideo(c.getAttribute('data-id'), labels[c.getAttribute('data-niche')]||'Portfólio'); }
+    c.addEventListener('click',abrir);
+    c.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); abrir(); } });
+  });
   if(modal){ modal.querySelector('.vmodal-back').addEventListener('click',closeVideo);
     modal.querySelector('.vmodal-x').addEventListener('click',closeVideo);
     document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeVideo(); }); }
 })();
 </script>
-  <div class="vmodal" id="vmodal" aria-hidden="true">
-    <div class="vmodal-back"></div>
-    <div class="win">
-      <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-title" id="vmodal-title">Portfólio</span><button class="vmodal-x" aria-label="Fechar">&times;</button></div>
-      <div class="win-body vmodal-body" id="vmodal-body"></div>
-    </div>
-  </div>
 <style>
 .langsw{display:inline-flex;align-items:center;gap:2px;padding:3px;border-radius:999px;
   background:rgba(255,255,255,.6);border:1px solid rgba(43,43,43,.10);
@@ -879,10 +880,10 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
       "que a audiência realmente ouve e responde 💗":"that the audience truly listens to and answers 💗",
       "· Sobre":"· About","conheça a Jheni":"meet Jheni","sobre_a_jheni.txt":"about_jheni.txt",
       "Pode me chamar de Jheni.":"You can call me Jheni.",
-      "Tenho 27 anos, sou de São José (a famosa Grande Floripa, em Santa Catarina), e tenho um talento especial pra achar graça e beleza nas coisas mais bobas. Na franja amarrotada de quem acabou de acordar, na luz do sol que invade a janela todo amanhecer, no perrengue do dia que vira história engraçada lá na frente.":"I'm 27, from São José, in Santa Catarina, Brazil, and I have a real talent for finding charm and beauty in the silliest things. In the messy bangs of someone who just woke up, in the sunlight coming through the window every morning, in the rough moment of the day that turns into a funny story later on.",
-      "Comecei pela maquiagem, por puro amor. Foi ela que me levou ao skincare, que virou um cuidado diário comigo mesma, com dermatologista, pesquisa e muita descoberta no meio do caminho. O fitness chegou depois e hoje faz parte da rotina, vivido no meu ritmo e sem drama.":"I started with makeup, out of pure love. Makeup is what led me into skincare, which became daily self care, with a dermatologist, research and a lot of discovery along the way. Fitness came later and is part of my routine now, lived at my own pace and without drama.",
-      "Durante o dia eu trabalho CLT, por isso crio nas horas (in)úteis: o intervalo, o caminho de volta, a noite antes de dormir, o dia de folga e o fim de semana. Faço porque amo criar e me comunicar com a minha comunidade. Em vez de reclamar da correria, eu acho o encanto dela. Gosto de mostrar pra vocês que o simples pode ser especial, e que a vida boa cabe na vida real, com franja amarrotada e tudo.":"During the day I have a full time job, so I create in the in between hours: the lunch break, the ride home, the night before bed, the day off and the weekend. I do it because I love creating and talking to my community. Instead of complaining about the rush, I find the charm in it. I like showing you that simple can be special, and that a good life fits inside a real one, messy bangs and all.",
-      "Quando eu indico algo, a minha comunidade acredita, porque sabe que eu falo com verdade, e é essa confiança que transforma indicação em vontade de comprar.":"When I recommend something, my community believes it, because they know I speak honestly, and that trust is what turns a recommendation into the will to buy.",
+      "Tenho 27 anos, sou de São José (a famosa Grande Floripa, em Santa Catarina), sou apaixonada por uma lente de câmera e tenho um talento especial pra achar graça e beleza nas coisas simples da rotina.":"I'm 27, from São José, in Santa Catarina, Brazil, I'm in love with a camera lens and I have a real talent for finding charm and beauty in the simplest parts of everyday life.",
+      "Hoje meus nichos conversam com quem eu sou: skincare, maquiagem e o mundo da beleza sempre estiveram presentes no meu dia a dia, e sempre estive em busca de entender mais sobre o assunto.":"Today my niches match who I am: skincare, makeup and the beauty world have always been part of my everyday life, and I have always wanted to understand more about it.",
+      "Além de criadora de conteúdo, tenho a rotina de uma CLT, o que conversa muito com a minha comunidade, que gosta de acompanhar como encaixar certas coisas na rotina corrida, sabe?! Aí entra o lifestyle, que gera uma identificação enorme com quem me acompanha.":"Besides being a content creator, I have a full time job, and that resonates a lot with my community, who like following how to fit things into a busy routine. That is where lifestyle comes in, and it creates a huge sense of identification with the people who follow me.",
+      "Faço porque amo criar e me comunicar, e hoje conquistei uma comunidade incrível.":"I do it because I love creating and communicating, and today I have built an incredible community.",
       "· Métricas":"· Metrics","📊 Analytics · Instagram · julho 2026":"📊 Analytics · Instagram · July 2026",
       "Contas alcançadas":"Accounts reached",
       "Alcance orgânico, sem investimento em anúncio":"Organic reach, with zero ad spend",
@@ -959,6 +960,14 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
       "Trabalho com prazo mínimo de 7 dias para criar, executar e editar com calma. Sempre que dá, testo o produto antes de gravar, fica mais fluido e honesto. Se o prazo for apertado, a gente se adapta sem problema.":"I work with a minimum 7 day lead time to create, shoot and edit without rushing. Whenever possible I test the product before filming, which makes everything more natural and honest. If the deadline is tight, we adapt without a problem.",
       "Entrega":"Delivery",
       "A parte mais importante. Entrego o material cru ou já com legendas e edição, do jeito que você preferir. Se a marca quiser, ainda envio o print dos Insights com o desempenho da publicação.":"The most important part. I deliver raw footage or fully edited with captions, whichever you prefer. If the brand wants it, I also send the Insights screenshot with the post performance.",
+      "Sua marca entra numa conversa que já está acontecendo.":"Your brand joins a conversation that is already happening.",
+      "Cerca de 76% das visualizações do perfil. A audiência assiste até o fim.":"About 76% of the profile views. The audience watches to the end.",
+      "Produto em uso na minha rotina, com opinião real no meu estilo.":"The product in use inside my routine, with a real opinion in my own style.",
+      "Conteúdo sob medida, pronto pros seus canais e mídia paga. Direitos conforme contrato.":"Custom content, ready for your channels and paid media. Usage rights per contract.",
+      "A gente define o objetivo e os limites da campanha. Quanto mais detalhe, mais o conteúdo sai com a cara da sua marca.":"We map the goal and the limits of the campaign. The more detail you give me, the closer the content lands to your brand.",
+      "Prazo mínimo de 7 dias pra gravar e editar com calma. Sempre que dá, testo o produto antes. Prazo apertado a gente adapta.":"Minimum 7 day lead time to shoot and edit without rushing. Whenever possible I test the product first. Tight deadline, we adapt.",
+      "Material cru ou já editado com legendas, como você preferir. Se quiser, mando o print dos Insights depois.":"Raw footage or fully edited with captions, whichever you prefer. If you want, I send the Insights screenshot afterwards.",
+      "Como eu":"How I",
       "· Marcas":"· Brands","marcas que já confiaram":"brands that have trusted me",
       "De grandes nomes como":"From big names like","e":"and",
       "a negócios locais queridos. Só entro em projetos que fazem sentido pra mim e pra comunidade que construí. É essa curadoria que mantém minha audiência acreditando no que eu compartilho.":"to beloved local businesses. I only take on projects that make sense for me and for the community I built. That curation is what keeps my audience believing in what I share.",
@@ -988,10 +997,10 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
       "que a audiência realmente ouve e responde 💗":"que la audiencia realmente escucha y responde 💗",
       "conheça a Jheni":"conoce a Jheni","sobre_a_jheni.txt":"sobre_jheni.txt",
       "Pode me chamar de Jheni.":"Pueden llamarme Jheni.",
-      "Tenho 27 anos, sou de São José (a famosa Grande Floripa, em Santa Catarina), e tenho um talento especial pra achar graça e beleza nas coisas mais bobas. Na franja amarrotada de quem acabou de acordar, na luz do sol que invade a janela todo amanhecer, no perrengue do dia que vira história engraçada lá na frente.":"Tengo 27 años, soy de São José, en Santa Catarina, Brasil, y tengo un talento especial para encontrarle gracia y belleza a las cosas más tontas. En el flequillo despeinado de quien acaba de despertar, en la luz del sol que entra por la ventana cada amanecer, en el mal rato del día que después se vuelve una historia graciosa.",
-      "Comecei pela maquiagem, por puro amor. Foi ela que me levou ao skincare, que virou um cuidado diário comigo mesma, com dermatologista, pesquisa e muita descoberta no meio do caminho. O fitness chegou depois e hoje faz parte da rotina, vivido no meu ritmo e sem drama.":"Empecé por el maquillaje, por puro amor. Él me llevó al skincare, que se volvió un cuidado diario conmigo misma, con dermatóloga, investigación y mucho descubrimiento en el camino. El fitness llegó después y hoy es parte de la rutina, vivido a mi ritmo y sin drama.",
-      "Durante o dia eu trabalho CLT, por isso crio nas horas (in)úteis: o intervalo, o caminho de volta, a noite antes de dormir, o dia de folga e o fim de semana. Faço porque amo criar e me comunicar com a minha comunidade. Em vez de reclamar da correria, eu acho o encanto dela. Gosto de mostrar pra vocês que o simples pode ser especial, e que a vida boa cabe na vida real, com franja amarrotada e tudo.":"Durante el día tengo un empleo fijo, así que creo en las horas sueltas: el descanso, el camino de vuelta, la noche antes de dormir, el día libre y el fin de semana. Lo hago porque amo crear y comunicarme con mi comunidad. En vez de quejarme de las prisas, les encuentro el encanto. Me gusta mostrarles que lo simple puede ser especial, y que la buena vida cabe en la vida real, con flequillo despeinado y todo.",
-      "Quando eu indico algo, a minha comunidade acredita, porque sabe que eu falo com verdade, e é essa confiança que transforma indicação em vontade de comprar.":"Cuando recomiendo algo, mi comunidad lo cree, porque sabe que hablo con verdad, y esa confianza es la que convierte una recomendación en ganas de comprar.",
+      "Tenho 27 anos, sou de São José (a famosa Grande Floripa, em Santa Catarina), sou apaixonada por uma lente de câmera e tenho um talento especial pra achar graça e beleza nas coisas simples da rotina.":"Tengo 27 años, soy de São José, en Santa Catarina, Brasil, estoy enamorada de una lente de cámara y tengo un talento especial para encontrarle gracia y belleza a las cosas simples de la rutina.",
+      "Hoje meus nichos conversam com quem eu sou: skincare, maquiagem e o mundo da beleza sempre estiveram presentes no meu dia a dia, e sempre estive em busca de entender mais sobre o assunto.":"Hoy mis nichos conversan con quien soy: el skincare, el maquillaje y el mundo de la belleza siempre estuvieron presentes en mi día a día, y siempre busqué entender más sobre el tema.",
+      "Além de criadora de conteúdo, tenho a rotina de uma CLT, o que conversa muito com a minha comunidade, que gosta de acompanhar como encaixar certas coisas na rotina corrida, sabe?! Aí entra o lifestyle, que gera uma identificação enorme com quem me acompanha.":"Además de creadora de contenido, tengo la rutina de un empleo fijo, y eso conecta mucho con mi comunidad, a la que le gusta seguir cómo encajar ciertas cosas en la rutina apretada. Ahí entra el lifestyle, que genera una identificación enorme con quien me acompaña.",
+      "Faço porque amo criar e me comunicar, e hoje conquistei uma comunidade incrível.":"Lo hago porque amo crear y comunicarme, y hoy conquisté una comunidad increíble.",
       "📊 Analytics · Instagram · julho 2026":"📊 Analytics · Instagram · julio 2026",
       "Contas alcançadas":"Cuentas alcanzadas",
       "Alcance orgânico, sem investimento em anúncio":"Alcance orgánico, sin inversión en anuncios",
@@ -1064,6 +1073,14 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
       "Criação":"Creación",
       "Trabalho com prazo mínimo de 7 dias para criar, executar e editar com calma. Sempre que dá, testo o produto antes de gravar, fica mais fluido e honesto. Se o prazo for apertado, a gente se adapta sem problema.":"Trabajo con un plazo mínimo de 7 días para crear, grabar y editar con calma. Siempre que puedo, pruebo el producto antes de grabar, así queda más fluido y honesto. Si el plazo es ajustado, nos adaptamos sin problema.",
       "A parte mais importante. Entrego o material cru ou já com legendas e edição, do jeito que você preferir. Se a marca quiser, ainda envio o print dos Insights com o desempenho da publicação.":"La parte más importante. Entrego el material en bruto o ya con subtítulos y edición, como prefieras. Si la marca quiere, también envío la captura de Insights con el rendimiento de la publicación.",
+      "Sua marca entra numa conversa que já está acontecendo.":"Tu marca entra en una conversación que ya está ocurriendo.",
+      "Cerca de 76% das visualizações do perfil. A audiência assiste até o fim.":"Cerca del 76% de las visualizaciones del perfil. La audiencia ve hasta el final.",
+      "Produto em uso na minha rotina, com opinião real no meu estilo.":"El producto en uso dentro de mi rutina, con opinión real y en mi estilo.",
+      "Conteúdo sob medida, pronto pros seus canais e mídia paga. Direitos conforme contrato.":"Contenido a medida, listo para tus canales y medios pagados. Derechos según contrato.",
+      "A gente define o objetivo e os limites da campanha. Quanto mais detalhe, mais o conteúdo sai com a cara da sua marca.":"Definimos el objetivo y los límites de la campaña. Cuanto más detalle me des, más cerca queda el contenido de tu marca.",
+      "Prazo mínimo de 7 dias pra gravar e editar com calma. Sempre que dá, testo o produto antes. Prazo apertado a gente adapta.":"Plazo mínimo de 7 días para grabar y editar con calma. Siempre que puedo, pruebo el producto antes. Si el plazo es ajustado, nos adaptamos.",
+      "Material cru ou já editado com legendas, como você preferir. Se quiser, mando o print dos Insights depois.":"Material en bruto o ya editado con subtítulos, como prefieras. Si quieres, envío después la captura de Insights.",
+      "Como eu":"Cómo",
       "marcas que já confiaram":"marcas que ya confiaron",
       "De grandes nomes como":"De grandes nombres como","e":"y",
       "a negócios locais queridos. Só entro em projetos que fazem sentido pra mim e pra comunidade que construí. É essa curadoria que mantém minha audiência acreditando no que eu compartilho.":"a negocios locales queridos. Solo entro en proyectos que tienen sentido para mí y para la comunidad que construí. Esa curaduría es la que mantiene a mi audiencia creyendo en lo que comparto.",
