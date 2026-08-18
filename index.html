@@ -896,7 +896,7 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
     if(card.dataset.activated) return; card.dataset.activated='1';
     var id=card.getAttribute('data-id');
     var ifr=document.createElement('iframe');
-    ifr.src='https://player.vimeo.com/video/'+id+'?background=1&autoplay=1&loop=1&muted=1&dnt=1';
+    ifr.src='https://player.vimeo.com/video/'+id+'?background=1&autoplay=1&loop=1&muted=1&playsinline=1&autopause=0&dnt=1';
     ifr.allow='autoplay; fullscreen; picture-in-picture'; ifr.setAttribute('allowfullscreen','');
     ifr.style.pointerEvents='none'; card.insertBefore(ifr, card.firstChild);
     if(window.Vimeo){ var pl=new Vimeo.Player(ifr); players[id]=pl;
@@ -906,14 +906,24 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
   // mais visível (1 por vez, estilo Reels). No desktop, todos os que estão à vista tocam.
   function isMobile(){ return window.matchMedia('(max-width:640px)').matches; }
   var ratios={};
+  function visibleCards(){ return cards.filter(function(c){ return !c.hidden; }); }
   function applyPlayback(){
     if(isMobile()){
-      var bestId=null,best=0;
+      var bestCard=null,best=0;
       cards.forEach(function(c){ if(c.hidden) return; var id=c.getAttribute('data-id');
-        var r=ratios[id]||0; if(r>best){best=r;bestId=id;} });
+        var r=ratios[id]||0; if(r>best){best=r;bestCard=c;} });
       cards.forEach(function(c){ if(c.hidden) return; var id=c.getAttribute('data-id'),p=players[id];
-        if(id===bestId && best>0.2){ activate(c); p=players[id]; if(p) p.play().catch(function(){}); }
+        if(c===bestCard && best>0.12){ activate(c); p=players[id]; if(p) p.play().catch(function(){}); }
         else if(p){ p.pause().catch(function(){}); } });
+      // deixa o proximo card ja carregado (pausado) para nao ter espera ao rolar
+      if(bestCard){
+        var vis=visibleCards(), i=vis.indexOf(bestCard), nx=vis[i+1];
+        if(nx && !nx.dataset.activated){
+          activate(nx);
+          var np=players[nx.getAttribute('data-id')];
+          if(np) np.pause().catch(function(){});
+        }
+      }
     } else {
       cards.forEach(function(c){ if(c.hidden) return; var id=c.getAttribute('data-id'),r=ratios[id]||0,p=players[id];
         if(r>=0.35){ activate(c); p=players[id]; if(p) p.play().catch(function(){}); }
@@ -924,7 +934,7 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
     es.forEach(function(e){ var id=e.target.getAttribute('data-id');
       ratios[id]=e.isIntersecting?e.intersectionRatio:0; });
     applyPlayback();
-  },{threshold:[0,0.2,0.35,0.5,0.75,1]});
+  },{threshold:[0,0.12,0.2,0.35,0.5,0.75,1],rootMargin:'120px 0px'});
   cards.forEach(function(c){ vObs.observe(c); });
   window.addEventListener('resize',function(){ clearTimeout(window.__rz); window.__rz=setTimeout(applyPlayback,200); });
 
@@ -992,7 +1002,7 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
     var ifr=card.querySelector('iframe'); if(!ifr || card.dataset.audio) return;
     card.dataset.audio='1';
     var novo=document.createElement('iframe');
-    novo.src='https://player.vimeo.com/video/'+id+'?autoplay=1&loop=1&muted=0&controls=0&playsinline=1&title=0&byline=0&portrait=0&badge=0&dnt=1';
+    novo.src='https://player.vimeo.com/video/'+id+'?autoplay=1&loop=1&muted=0&controls=0&playsinline=1&autopause=0&title=0&byline=0&portrait=0&badge=0&dnt=1';
     novo.allow='autoplay; fullscreen; picture-in-picture';
     novo.setAttribute('allowfullscreen',''); novo.setAttribute('title', ifr.getAttribute('title')||'');
     novo.style.pointerEvents='none';
