@@ -37,6 +37,10 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%9F%3C/text%3E%3C/svg%3E"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preconnect" href="https://player.vimeo.com"/>
+<link rel="preconnect" href="https://i.vimeocdn.com"/>
+<link rel="preconnect" href="https://f.vimeocdn.com" crossorigin/>
+<link rel="dns-prefetch" href="https://vimeo.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet"/>
 <style>:root{
   --ink:#2b2b2b; --ink-soft:#6b6470;
@@ -896,7 +900,7 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
     if(card.dataset.activated) return; card.dataset.activated='1';
     var id=card.getAttribute('data-id');
     var ifr=document.createElement('iframe');
-    ifr.src='https://player.vimeo.com/video/'+id+'?background=1&autoplay=1&loop=1&muted=1&playsinline=1&autopause=0&dnt=1';
+    ifr.src='https://player.vimeo.com/video/'+id+'?background=1&autoplay=1&loop=1&muted=1&playsinline=1&autopause=0&quality=540p&dnt=1';
     ifr.allow='autoplay; fullscreen; picture-in-picture'; ifr.setAttribute('allowfullscreen','');
     ifr.style.pointerEvents='none'; card.insertBefore(ifr, card.firstChild);
     if(window.Vimeo){ var pl=new Vimeo.Player(ifr); players[id]=pl;
@@ -925,8 +929,12 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
         }
       }
     } else {
-      cards.forEach(function(c){ if(c.hidden) return; var id=c.getAttribute('data-id'),r=ratios[id]||0,p=players[id];
-        if(r>=0.35){ activate(c); p=players[id]; if(p) p.play().catch(function(){}); }
+      // toca os mais visiveis (limite de 4 juntos para nao dividir a banda e travar todos)
+      var vis=visibleCards().filter(function(c){ return (ratios[c.getAttribute('data-id')]||0)>=0.15; });
+      vis.sort(function(a,b){ return (ratios[b.getAttribute('data-id')]||0)-(ratios[a.getAttribute('data-id')]||0); });
+      var tocando=vis.slice(0,4);
+      cards.forEach(function(c){ if(c.hidden) return; var id=c.getAttribute('data-id'),p=players[id];
+        if(tocando.indexOf(c)>=0){ activate(c); p=players[id]; if(p) p.play().catch(function(){}); }
         else if(p){ p.pause().catch(function(){}); } });
     }
   }
@@ -951,6 +959,27 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
     es.forEach(function(e){ if(e.isIntersecting){ loadThumb(e.target); thumbObs.unobserve(e.target); } });
   },{rootMargin:'400px 0px'});
   cards.forEach(function(c){ thumbObs.observe(c); });
+
+  // ---- Pre-carregamento: o player ja fica pronto antes do card chegar na tela ----
+  var fila=[], correndo=false;
+  function processarFila(){
+    if(correndo) return;
+    var c=fila.shift();
+    if(!c){ correndo=false; return; }
+    correndo=true;
+    activate(c);
+    var p=players[c.getAttribute('data-id')];
+    if(p && !c.dataset.tocando) p.pause().catch(function(){});
+    setTimeout(function(){ correndo=false; processarFila(); }, 220);
+  }
+  function preparar(c){
+    if(c.dataset.activated || fila.indexOf(c)>=0) return;
+    fila.push(c); processarFila();
+  }
+  var preObs=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ preparar(e.target); preObs.unobserve(e.target); } });
+  },{rootMargin:'700px 0px'});
+  cards.forEach(function(c){ preObs.observe(c); });
 
   function openFolder(n){
     cards.forEach(function(c){
