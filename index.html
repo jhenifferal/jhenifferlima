@@ -218,8 +218,9 @@ img{max-width:100%;}
   color:#fff;background:var(--green);padding:.4rem .8rem;border-radius:999px;box-shadow:var(--shadow-sm);}
 
 /* ===== metrics ===== */
-.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;}
+.stat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.9rem;}
 .stat{background:#fff;border-radius:16px;padding:1.1rem 1.1rem;box-shadow:var(--shadow-sm);border:1px solid var(--line);}
+.stat .ctx{overflow-wrap:anywhere;}
 .stat .num{font-family:'Fraunces',serif;font-weight:600;font-size:1.85rem;line-height:1;color:var(--ink);}
 .stat.key .num{color:var(--pink);}
 .stat .unit{font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-top:.5rem;font-weight:600;}
@@ -572,6 +573,7 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
 .reveal.vis{opacity:1;transform:none;}
 
 @media(max-width:860px){
+  #sobre .stack .polaroid{max-width:min(420px,92%);margin-left:auto;margin-right:auto;}
   .hero-grid,.contact-grid{grid-template-columns:1fr;}
   .cols.s11,.cols.s21,.cols.s12{grid-template-columns:1fr;}
   .chart-row{grid-template-columns:1fr;}
@@ -585,7 +587,7 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
 }
 @media(max-width:540px){
   .board{padding:1.6rem 1rem 3rem;}
-  .stat-grid{grid-template-columns:1fr 1fr;}
+  .stat-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
   .apps{grid-template-columns:repeat(2,1fr);}
   .gallery{grid-template-columns:1fr 1fr;}
   .vidgrid{grid-template-columns:1fr 1fr;}
