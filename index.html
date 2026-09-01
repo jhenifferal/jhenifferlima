@@ -19,7 +19,7 @@
 <meta property="og:type" content="profile"/>
 <meta property="og:site_name" content="Jheniffer Lima"/>
 <meta property="og:title" content="Jheniffer Lima · Mídia Kit 2026"/>
-<meta property="og:description" content="Influenciadora &amp; UGC Creator · Beleza, skincare &amp; lifestyle · 14,5% de engajamento, 100% orgânico · Grande Florianópolis, SC"/>
+<meta property="og:description" content="Influenciadora &amp; UGC Creator · Beleza, skincare &amp; lifestyle · 7,4% de engajamento, 63% de alcance novo · Grande Florianópolis, SC"/>
 <meta property="og:locale" content="pt_BR"/>
 <meta property="og:locale:alternate" content="en_US"/>
 <meta property="og:locale:alternate" content="es_ES"/>
@@ -134,7 +134,24 @@ img{max-width:100%;}
 .polaroid .cap{font-family:'Caveat',cursive;font-size:1.2rem;text-align:center;margin-top:.45rem;color:#6b6470;}
 
 /* ===== HERO ===== */
-#hero{padding-top:.5rem;}
+#hero{padding-top:.5rem;position:relative;isolation:isolate;}
+
+/* ===== video de capa ===== */
+.hero-video{position:absolute;inset:-1.4rem -1.4rem -1.2rem;border-radius:30px;overflow:hidden;
+  z-index:0;pointer-events:none;background:var(--cream) center/cover no-repeat;}
+.hero-video video{width:100%;height:100%;object-fit:cover;display:block;}
+.hv-veil{position:absolute;inset:0;
+  background:linear-gradient(100deg,rgba(251,245,240,.88) 0%,rgba(251,245,240,.74) 40%,
+    rgba(251,245,240,.30) 74%,rgba(251,245,240,.38) 100%);}
+.hero-grid{position:relative;z-index:1;}
+@media(max-width:860px){
+  .hero-video{inset:-1rem -1rem -1rem;border-radius:24px;}
+  .hv-veil{background:linear-gradient(180deg,rgba(251,245,240,.93) 0%,rgba(251,245,240,.88) 55%,
+    rgba(251,245,240,.58) 100%);}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-video video{display:none;}
+}
 .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.2rem;align-items:start;}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.68rem;font-weight:700;
   letter-spacing:.2em;text-transform:uppercase;color:var(--ink);background:#fff;
@@ -589,15 +606,22 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
 
   <!-- HERO -->
   <section class="scene" id="hero">
+    <div class="hero-video" aria-hidden="true">
+      <video id="heroVideo" autoplay muted loop playsinline disablepictureinpicture
+             preload="metadata" poster="capa-video-poster.jpg" tabindex="-1">
+        <source src="capa-video.mp4" type="video/mp4"/>
+      </video>
+      <span class="hv-veil"></span>
+    </div>
     <div class="hero-grid">
       <div class="reveal">
         <span class="hero-eyebrow">📌 Mídia Kit · Agosto 2026</span>
         <h1 class="hero-name"><span class="l1">Jheniffer</span><br><span class="l2">Lima</span></h1>
         <div class="hero-role">Influenciadora &amp; UGC Creator</div>
         <div class="hero-metrics">
-          <div class="mtile"><div class="n">34 mil</div><div class="l">contas alcançadas</div></div>
-          <div class="mtile"><div class="n b">14,5%</div><div class="l">engajamento</div></div>
-          <div class="mtile"><div class="n p">62,1%</div><div class="l">público em SC</div></div>
+          <div class="mtile"><div class="n">38 mil</div><div class="l">contas alcançadas</div></div>
+          <div class="mtile"><div class="n b">7,4%</div><div class="l">engajamento</div></div>
+          <div class="mtile"><div class="n p">61,2%</div><div class="l">público em SC</div></div>
         </div>
       </div>
         <div class="hero-right reveal">
@@ -636,38 +660,38 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
   <section class="scene" id="metricas">
     <span class="scene-tag reveal"><b>02</b> · Métricas</span>
     <div class="win reveal" style="margin-top:1.1rem;">
-      <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-title">📊 Analytics · Instagram · julho 2026</span></div>
+      <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-title">📊 Analytics · Instagram · agosto 2026</span></div>
       <div class="win-body">
         <div class="stat-grid">
-          <div class="stat key"><div class="num">33.828</div><div class="unit">Contas alcançadas</div><div class="ctx">Alcance orgânico, sem investimento em anúncio</div></div>
-          <div class="stat"><div class="num">66.859</div><div class="unit">Visualizações</div><div class="ctx">Conteúdo visto cerca de 52x a base de seguidores de julho</div></div>
-          <div class="stat"><div class="num">4.912</div><div class="unit">Interações</div><div class="ctx">Pessoas que pararam, reagiram e responderam</div></div>
-          <div class="stat key"><div class="num">14,5%</div><div class="unit">Taxa de engajamento</div><div class="ctx">Público de verdade que curte, comenta e salva</div></div>
-          <div class="stat"><div class="num">62,1%</div><div class="unit">Audiência local</div><div class="ctx">Quase dois terços do público vive na Grande Floripa</div></div>
-          <div class="stat"><div class="num">1.321</div><div class="unit">Seguidores</div><div class="ctx">Eram 1.284 em julho. Crescimento 100% orgânico</div></div>
+          <div class="stat key"><div class="num">38.427</div><div class="unit">Contas alcançadas</div><div class="ctx">Alcance orgânico, sem investimento em anúncio</div></div>
+          <div class="stat"><div class="num">80.510</div><div class="unit">Visualizações</div><div class="ctx">Conteúdo visto cerca de 60x a base de seguidores</div></div>
+          <div class="stat"><div class="num">2.844</div><div class="unit">Interações</div><div class="ctx">Pessoas que pararam, reagiram e responderam</div></div>
+          <div class="stat key"><div class="num">7,4%</div><div class="unit">Taxa de engajamento</div><div class="ctx">Acima da média do mercado, que fica entre 3% e 5%</div></div>
+          <div class="stat"><div class="num">61,2%</div><div class="unit">Audiência local</div><div class="ctx">Quase dois terços do público vive na Grande Floripa</div></div>
+          <div class="stat"><div class="num">1.337</div><div class="unit">Seguidores</div><div class="ctx">Eram 1.284 no início de agosto. Crescimento 100% orgânico</div></div>
         </div>
 
         <div class="chart-row">
           <div class="donut-card">
             <h4>Gênero · seguidores</h4>
             <div class="donut-wrap">
-              <div class="donut" style="background:conic-gradient(var(--pink) 0 71.6%, var(--green) 71.6% 100%);"></div>
+              <div class="donut" style="background:conic-gradient(var(--pink) 0 73.3%, var(--green) 73.3% 100%);"></div>
               <div class="legend">
-                <div class="row"><span class="sw" style="background:var(--pink)"></span>Mulheres <b>71,6%</b></div>
-                <div class="row"><span class="sw" style="background:var(--green)"></span>Homens <b>28,4%</b></div>
+                <div class="row"><span class="sw" style="background:var(--pink)"></span>Mulheres <b>73,3%</b></div>
+                <div class="row"><span class="sw" style="background:var(--green)"></span>Homens <b>26,7%</b></div>
               </div>
             </div>
           </div>
           <div class="donut-card">
             <h4>Faixa etária</h4>
             <div class="donut-wrap">
-              <div class="donut" style="background:conic-gradient(var(--pink) 0 53.8%, var(--green) 53.8% 78.7%, var(--gold) 78.7% 87.9%, var(--mint) 87.9% 94.3%, #ffd0e6 94.3% 100%);"></div>
+              <div class="donut" style="background:conic-gradient(var(--pink) 0 54%, var(--green) 54% 78.5%, var(--gold) 78.5% 87.5%, var(--mint) 87.5% 94.7%, #ffd0e6 94.7% 100%);"></div>
               <div class="legend">
-                <div class="row"><span class="sw" style="background:var(--pink)"></span>25-34 <b>53,8%</b></div>
-                <div class="row"><span class="sw" style="background:var(--green)"></span>35-44 <b>24,9%</b></div>
-                <div class="row"><span class="sw" style="background:var(--gold)"></span>45-54 <b>9,2%</b></div>
-                <div class="row"><span class="sw" style="background:var(--mint)"></span>18-24 <b>6,4%</b></div>
-                <div class="row"><span class="sw" style="background:#ffd0e6"></span>Outras <b>5,6%</b></div>
+                <div class="row"><span class="sw" style="background:var(--pink)"></span>25-34 <b>54,0%</b></div>
+                <div class="row"><span class="sw" style="background:var(--green)"></span>35-44 <b>24,5%</b></div>
+                <div class="row"><span class="sw" style="background:var(--gold)"></span>45-54 <b>9,0%</b></div>
+                <div class="row"><span class="sw" style="background:var(--mint)"></span>18-24 <b>7,2%</b></div>
+                <div class="row"><span class="sw" style="background:#ffd0e6"></span>Outras <b>5,3%</b></div>
               </div>
             </div>
           </div>
@@ -676,13 +700,13 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
         <div class="donut-card" style="margin-top:1.1rem;">
           <h4>Principais cidades</h4>
           <div class="bars">
-            <div class="bar-row"><div class="top"><span>São José (SC)</span><b>39,4%</b></div><div class="track"><span style="width:100%"></span></div></div>
-            <div class="bar-row"><div class="top"><span>Palhoça (SC)</span><b>10,5%</b></div><div class="track"><span style="width:27%"></span></div></div>
-            <div class="bar-row"><div class="top"><span>Florianópolis (SC)</span><b>9,4%</b></div><div class="track"><span style="width:24%"></span></div></div>
-            <div class="bar-row"><div class="top"><span>São Paulo (SP)</span><b>3,3%</b></div><div class="track"><span style="width:8%"></span></div></div>
-            <div class="bar-row"><div class="top"><span>Biguaçu (SC)</span><b>2,8%</b></div><div class="track"><span style="width:7%"></span></div></div>
+            <div class="bar-row"><div class="top"><span>São José (SC)</span><b>38,5%</b></div><div class="track"><span style="width:100%"></span></div></div>
+            <div class="bar-row"><div class="top"><span>Florianópolis (SC)</span><b>10,2%</b></div><div class="track"><span style="width:27%"></span></div></div>
+            <div class="bar-row"><div class="top"><span>Palhoça (SC)</span><b>10,1%</b></div><div class="track"><span style="width:26%"></span></div></div>
+            <div class="bar-row"><div class="top"><span>São Paulo (SP)</span><b>3,3%</b></div><div class="track"><span style="width:9%"></span></div></div>
+            <div class="bar-row"><div class="top"><span>Biguaçu (SC)</span><b>2,4%</b></div><div class="track"><span style="width:6%"></span></div></div>
           </div>
-          <p style="font-size:.74rem;color:var(--green);margin-top:.9rem;">⌖ Grande Florianópolis somada: <strong>62,1%</strong> · Dados do Instagram Insights, julho/2026. Nada estimado, nada inflado.</p>
+          <p style="font-size:.74rem;color:var(--green);margin-top:.9rem;">⌖ Grande Florianópolis somada: <strong>61,2%</strong> · Dados do Instagram Insights, agosto/2026. Nada estimado, nada inflado.</p>
           <div class="note mint" style="margin-top:1.1rem;">Não é sobre quantos me seguem. É sobre quantos param, confiam e vão atrás 🌟</div>
         </div>
       </div>
@@ -768,7 +792,7 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
         <div class="win-body">
           <ul class="deliver">
             <li><span class="no">01</span><div><div class="dt">Stories com engajamento</div><div class="dd">Sua marca entra numa conversa que já está acontecendo.</div></div></li>
-            <li><span class="no">02</span><div><div class="dt">Reels autênticos</div><div class="dd">Cerca de 76% das visualizações do perfil. A audiência assiste até o fim.</div></div></li>
+            <li><span class="no">02</span><div><div class="dt">Reels autênticos</div><div class="dd">Cerca de 63% das visualizações do perfil e 70% de todas as interações do mês.</div></div></li>
             <li><span class="no">03</span><div><div class="dt">Feed com texto que conecta</div><div class="dd">Carrosséis e fotos com escrita que convence. Eu também escrevo, não só gravo.</div></div></li>
             <li><span class="no">04</span><div><div class="dt">Review honesto</div><div class="dd">Produto em uso na minha rotina, com opinião real no meu estilo.</div></div></li>
             <li><span class="no">05</span><div><div class="dt">UGC pra sua marca usar</div><div class="dd">Conteúdo sob medida, pronto pros seus canais e mídia paga. Direitos conforme contrato.</div></div></li>
@@ -1126,7 +1150,7 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
       "Sobre":"About","Métricas":"Metrics","Nichos":"Niches","Portfólio":"Portfolio",
       "Entrego":"Deliverables","Processo":"Process","Marcas":"Brands","Contato":"Contact",
       "📌 Mídia Kit · Agosto 2026":"📌 Media Kit · August 2026",
-      "34 mil":"34k","contas alcançadas":"accounts reached","engajamento":"engagement",
+      "38 mil":"38k","contas alcançadas":"accounts reached","engajamento":"engagement",
       "público em SC":"audience in Santa Catarina",
       "Sua marca recomendada por uma":"Your brand recommended by a","voz":"voice",
       "que a audiência realmente ouve e responde 💗":"that the audience truly listens to and answers 💗",
@@ -1136,26 +1160,26 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
       "Hoje meus nichos conversam com quem eu sou: skincare, maquiagem e o mundo da beleza sempre estiveram presentes no meu dia a dia, e sempre estive em busca de entender mais sobre o assunto.":"Today my niches match who I am: skincare, makeup and the beauty world have always been part of my everyday life, and I have always wanted to understand more about it.",
       "Além de criadora de conteúdo, tenho a rotina de uma CLT, o que conversa muito com a minha comunidade, que gosta de acompanhar como encaixar certas coisas na rotina corrida, sabe?! Aí entra o lifestyle, que gera uma identificação enorme com quem me acompanha.":"Besides being a content creator, I have a full time job, and that resonates a lot with my community, who like following how to fit things into a busy routine. That is where lifestyle comes in, and it creates a huge sense of identification with the people who follow me.",
       "Faço porque amo criar e me comunicar, e hoje conquistei uma comunidade incrível.":"I do it because I love creating and communicating, and today I have built an incredible community.",
-      "· Métricas":"· Metrics","📊 Analytics · Instagram · julho 2026":"📊 Analytics · Instagram · July 2026",
+      "· Métricas":"· Metrics","📊 Analytics · Instagram · agosto 2026":"📊 Analytics · Instagram · August 2026",
       "Contas alcançadas":"Accounts reached",
       "Alcance orgânico, sem investimento em anúncio":"Organic reach, with zero ad spend",
       "Visualizações":"Views",
-      "Conteúdo visto cerca de 52x a base de seguidores de julho":"Content seen about 52x the July follower base",
+      "Conteúdo visto cerca de 60x a base de seguidores":"Content seen about 60x the follower base",
       "Interações":"Interactions",
       "Pessoas que pararam, reagiram e responderam":"People who stopped, reacted and replied",
       "Taxa de engajamento":"Engagement rate",
-      "Público de verdade que curte, comenta e salva":"A real audience that likes, comments and saves",
+      "Acima da média do mercado, que fica entre 3% e 5%":"Above the market average, which sits between 3% and 5%",
       "Audiência local":"Local audience",
       "Quase dois terços do público vive na Grande Floripa":"Almost two thirds of the audience lives in Greater Florianópolis",
       "Seguidores":"Followers",
-      "Eram 1.284 em julho. Crescimento 100% orgânico":"1,284 in July. 100% organic growth",
+      "Eram 1.284 no início de agosto. Crescimento 100% orgânico":"1,284 at the start of August. 100% organic growth",
       "Gênero · seguidores":"Gender · followers","Mulheres":"Women","Homens":"Men",
       "Faixa etária":"Age range","Outras":"Other","Principais cidades":"Top cities",
       "⌖ Grande Florianópolis somada:":"⌖ Greater Florianópolis combined:",
-      "· Dados do Instagram Insights, julho/2026. Nada estimado, nada inflado.":"· Data from Instagram Insights, July 2026. Nothing estimated, nothing inflated.",
+      "· Dados do Instagram Insights, agosto/2026. Nada estimado, nada inflado.":"· Data from Instagram Insights, August 2026. Nothing estimated, nothing inflated.",
       "Não é sobre quantos me seguem. É sobre quantos param, confiam e vão atrás 🌟":"It's not about how many follow me. It's about how many stop, trust and go after it 🌟",
       "· Por que Nano":"· Why Nano","por_que_nano.txt":"why_nano.txt",
-      "1.321 seguidores que":"1,321 followers who","confiam":"trust",
+      "1.337 seguidores que":"1,337 followers who","confiam":"trust",
       "valem mais do que 50 mil que ignoram":"are worth more than 50,000 who scroll past",
       "No universo da influência digital, tamanho não é o único critério que importa. Estudos de plataformas como Later, Hootsuite e Nielsen mostram que contas com menos de 10 mil seguidores costumam gerar taxas de engajamento":"In digital influence, size is not the only criterion that matters. Studies from platforms such as Later, Hootsuite and Nielsen show that accounts under 10,000 followers tend to generate engagement rates",
       "consideravelmente mais altas":"considerably higher",
@@ -1189,7 +1213,7 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
       "Stories com engajamento":"Stories that get engagement",
       "Sua marca entra numa conversa que já está acontecendo, do jeito mais natural possível.":"Your brand joins a conversation that is already happening, in the most natural way possible.",
       "Reels autênticos":"Authentic Reels",
-      "Cerca de 76% das visualizações do perfil. Conteúdo que a audiência assiste até o fim porque parece com a vida dela.":"About 76% of the profile views. Content the audience watches to the end because it looks like their own life.",
+      "Cerca de 63% das visualizações do perfil. Conteúdo que a audiência assiste até o fim porque parece com a vida dela.":"About 63% of profile views. Content the audience watches to the end because it looks like their own life.",
       "Feed com texto que conecta":"Feed posts with copy that connects",
       "Carrosséis e fotos com escrita que convence. Eu também escrevo, não só gravo.":"Carousels and photos with copy that convinces. I write too, not only film.",
       "Review honesto":"Honest review",
@@ -1213,7 +1237,7 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
       "Entrega":"Delivery",
       "A parte mais importante. Entrego o material cru ou já com legendas e edição, do jeito que você preferir. Se a marca quiser, ainda envio o print dos Insights com o desempenho da publicação.":"The most important part. I deliver raw footage or fully edited with captions, whichever you prefer. If the brand wants it, I also send the Insights screenshot with the post performance.",
       "Sua marca entra numa conversa que já está acontecendo.":"Your brand joins a conversation that is already happening.",
-      "Cerca de 76% das visualizações do perfil. A audiência assiste até o fim.":"About 76% of the profile views. The audience watches to the end.",
+      "Cerca de 63% das visualizações do perfil e 70% de todas as interações do mês.":"About 63% of profile views and 70% of all interactions in the month.",
       "Produto em uso na minha rotina, com opinião real no meu estilo.":"The product in use inside my routine, with a real opinion in my own style.",
       "Conteúdo sob medida, pronto pros seus canais e mídia paga. Direitos conforme contrato.":"Custom content, ready for your channels and paid media. Usage rights per contract.",
       "A gente define o objetivo e os limites da campanha. Quanto mais detalhe, mais o conteúdo sai com a cara da sua marca.":"We map the goal and the limits of the campaign. The more detail you give me, the closer the content lands to your brand.",
@@ -1241,10 +1265,10 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
       "Manda para":"Send it to",", respondo em 48h 🌟":", I reply within 48h 🌟",
       "enviar seu e-mail...":"send your email...",
       "Jheniffer Lima · Mídia Kit 2026 · 🌟":"Jheniffer Lima · Media Kit 2026 · 🌟",
-      "33.828":"33,828","66.859":"66,859","4.912":"4,912","1.321":"1,321",
-      "14,5%":"14.5%","62,1%":"62.1%","71,6%":"71.6%","28,4%":"28.4%","53,8%":"53.8%",
-      "24,9%":"24.9%","9,2%":"9.2%","6,4%":"6.4%","5,6%":"5.6%","39,4%":"39.4%",
-      "10,5%":"10.5%","9,4%":"9.4%","3,3%":"3.3%","2,8%":"2.8%"
+      "38.427":"38,427","80.510":"80,510","2.844":"2,844","1.337":"1,337",
+      "7,4%":"7.4%","61,2%":"61.2%","73,3%":"73.3%","26,7%":"26.7%","54,0%":"54.0%",
+      "24,5%":"24.5%","9,0%":"9.0%","7,2%":"7.2%","5,3%":"5.3%","38,5%":"38.5%",
+      "10,2%":"10.2%","10,1%":"10.1%","3,3%":"3.3%","2,4%":"2.4%"
     },
     es:{
       "Influenciadora & UGC Creator":"Influencer & UGC Creator",
@@ -1261,22 +1285,22 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
       "Hoje meus nichos conversam com quem eu sou: skincare, maquiagem e o mundo da beleza sempre estiveram presentes no meu dia a dia, e sempre estive em busca de entender mais sobre o assunto.":"Hoy mis nichos conversan con quien soy: el skincare, el maquillaje y el mundo de la belleza siempre estuvieron presentes en mi día a día, y siempre busqué entender más sobre el tema.",
       "Além de criadora de conteúdo, tenho a rotina de uma CLT, o que conversa muito com a minha comunidade, que gosta de acompanhar como encaixar certas coisas na rotina corrida, sabe?! Aí entra o lifestyle, que gera uma identificação enorme com quem me acompanha.":"Además de creadora de contenido, tengo la rutina de un empleo fijo, y eso conecta mucho con mi comunidad, a la que le gusta seguir cómo encajar ciertas cosas en la rutina apretada. Ahí entra el lifestyle, que genera una identificación enorme con quien me acompaña.",
       "Faço porque amo criar e me comunicar, e hoje conquistei uma comunidade incrível.":"Lo hago porque amo crear y comunicarme, y hoy conquisté una comunidad increíble.",
-      "📊 Analytics · Instagram · julho 2026":"📊 Analytics · Instagram · julio 2026",
+      "📊 Analytics · Instagram · agosto 2026":"📊 Analytics · Instagram · agosto 2026",
       "Contas alcançadas":"Cuentas alcanzadas",
       "Alcance orgânico, sem investimento em anúncio":"Alcance orgánico, sin inversión en anuncios",
       "Visualizações":"Visualizaciones",
-      "Conteúdo visto cerca de 52x a base de seguidores de julho":"Contenido visto cerca de 52x la base de seguidores de julio",
+      "Conteúdo visto cerca de 60x a base de seguidores":"Contenido visto cerca de 60x la base de seguidores",
       "Interações":"Interacciones",
       "Pessoas que pararam, reagiram e responderam":"Personas que se detuvieron, reaccionaron y respondieron",
       "Taxa de engajamento":"Tasa de engagement",
-      "Público de verdade que curte, comenta e salva":"Público de verdad que da like, comenta y guarda",
+      "Acima da média do mercado, que fica entre 3% e 5%":"Por encima del promedio del mercado, que está entre 3% y 5%",
       "Audiência local":"Audiencia local",
       "Quase dois terços do público vive na Grande Floripa":"Casi dos tercios del público vive en la Gran Florianópolis",
-      "Eram 1.284 em julho. Crescimento 100% orgânico":"Eran 1.284 en julio. Crecimiento 100% orgánico",
+      "Eram 1.284 no início de agosto. Crescimento 100% orgânico":"Eran 1.284 al inicio de agosto. Crecimiento 100% orgánico",
       "Gênero · seguidores":"Género · seguidores","Mulheres":"Mujeres","Homens":"Hombres",
       "Faixa etária":"Rango de edad","Outras":"Otras","Principais cidades":"Principales ciudades",
       "⌖ Grande Florianópolis somada:":"⌖ Gran Florianópolis sumada:",
-      "· Dados do Instagram Insights, julho/2026. Nada estimado, nada inflado.":"· Datos de Instagram Insights, julio/2026. Nada estimado, nada inflado.",
+      "· Dados do Instagram Insights, agosto/2026. Nada estimado, nada inflado.":"· Datos de Instagram Insights, agosto/2026. Nada estimado, nada inflado.",
       "Não é sobre quantos me seguem. É sobre quantos param, confiam e vão atrás 🌟":"No se trata de cuántos me siguen. Se trata de cuántos se detienen, confían y van a buscar 🌟",
       "· Por que Nano":"· Por qué Nano","confiam":"confían",
       "valem mais do que 50 mil que ignoram":"valen más que 50 mil que ignoran",
@@ -1311,7 +1335,7 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
       "Stories com engajamento":"Stories con engagement",
       "Sua marca entra numa conversa que já está acontecendo, do jeito mais natural possível.":"Tu marca entra en una conversación que ya está ocurriendo, de la forma más natural posible.",
       "Reels autênticos":"Reels auténticos",
-      "Cerca de 76% das visualizações do perfil. Conteúdo que a audiência assiste até o fim porque parece com a vida dela.":"Cerca del 76% de las visualizaciones del perfil. Contenido que la audiencia ve hasta el final porque se parece a su propia vida.",
+      "Cerca de 63% das visualizações do perfil. Conteúdo que a audiência assiste até o fim porque parece com a vida dela.":"Cerca del 63% de las visualizaciones del perfil. Contenido que la audiencia ve hasta el final porque se parece a su propia vida.",
       "Feed com texto que conecta":"Feed con texto que conecta",
       "Carrosséis e fotos com escrita que convence. Eu também escrevo, não só gravo.":"Carruseles y fotos con textos que convencen. Yo también escribo, no solo grabo.",
       "Review honesto":"Reseña honesta",
@@ -1334,7 +1358,7 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
       "Trabalho com prazo mínimo de 7 dias para criar, executar e editar com calma. Sempre que dá, testo o produto antes de gravar, fica mais fluido e honesto. Se o prazo for apertado, a gente se adapta sem problema.":"Trabajo con un plazo mínimo de 7 días para crear, grabar y editar con calma. Siempre que puedo, pruebo el producto antes de grabar, así queda más fluido y honesto. Si el plazo es ajustado, nos adaptamos sin problema.",
       "A parte mais importante. Entrego o material cru ou já com legendas e edição, do jeito que você preferir. Se a marca quiser, ainda envio o print dos Insights com o desempenho da publicação.":"La parte más importante. Entrego el material en bruto o ya con subtítulos y edición, como prefieras. Si la marca quiere, también envío la captura de Insights con el rendimiento de la publicación.",
       "Sua marca entra numa conversa que já está acontecendo.":"Tu marca entra en una conversación que ya está ocurriendo.",
-      "Cerca de 76% das visualizações do perfil. A audiência assiste até o fim.":"Cerca del 76% de las visualizaciones del perfil. La audiencia ve hasta el final.",
+      "Cerca de 63% das visualizações do perfil e 70% de todas as interações do mês.":"Cerca del 63% de las visualizaciones del perfil y el 70% de todas las interacciones del mes.",
       "Produto em uso na minha rotina, com opinião real no meu estilo.":"El producto en uso dentro de mi rutina, con opinión real y en mi estilo.",
       "Conteúdo sob medida, pronto pros seus canais e mídia paga. Direitos conforme contrato.":"Contenido a medida, listo para tus canales y medios pagados. Derechos según contrato.",
       "A gente define o objetivo e os limites da campanha. Quanto mais detalhe, mais o conteúdo sai com a cara da sua marca.":"Definimos el objetivo y los límites de la campaña. Cuanto más detalle me des, más cerca queda el contenido de tu marca.",
@@ -1362,6 +1386,40 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
       "Jheniffer Lima · Mídia Kit 2026 · 🌟":"Jheniffer Lima · Media Kit 2026 · 🌟"
     }
   };
+
+
+  /* ===== video de capa: pausa fora da tela e cai no poster se falhar ===== */
+  (function(){
+    var v = document.getElementById('heroVideo');
+    if(!v) return;
+    var wrap = v.parentNode;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function poster(){
+      wrap.style.backgroundImage = "url('" + (v.getAttribute('poster')||'') + "')";
+      v.style.display = 'none';
+    }
+    v.addEventListener('error', poster);
+    v.addEventListener('stalled', function(){ if(v.readyState < 2) poster(); });
+
+    if(reduce){ poster(); return; }
+
+    var play = v.play();
+    if(play && play.catch) play.catch(poster);
+
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if(e.isIntersecting){ var r = v.play(); if(r && r.catch) r.catch(function(){}); }
+          else { v.pause(); }
+        });
+      },{threshold:.05}).observe(wrap);
+    }
+    document.addEventListener('visibilitychange', function(){
+      if(document.hidden) v.pause();
+      else { var r = v.play(); if(r && r.catch) r.catch(function(){}); }
+    });
+  })();
 
   var ATTR={
     en:{
