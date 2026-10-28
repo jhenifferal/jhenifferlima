@@ -41,15 +41,15 @@
 <link rel="preconnect" href="https://i.vimeocdn.com"/>
 <link rel="preconnect" href="https://f.vimeocdn.com" crossorigin/>
 <link rel="dns-prefetch" href="https://vimeo.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>:root{
   --ink:#2b2b2b; --ink-soft:#6b6470;
   --cream:#fbf5f0; --soft-pink:#ffe3f0;
-  --pink:#f25ca2; --green:#2e7d5b; --gold:#c9a66b; --mint:#5de490;
+  --pink:#f25ca2; --green:#2e7d5b; --gold:#f7a3ca; --mint:#8fc2ab; /* paleta 2026: dourado e menta viraram tons de rosa e verde */
   --glass:rgba(255,255,255,.62);
   --glass-strong:rgba(255,252,249,.86);
   --line:rgba(43,43,43,.10);
-  --note-gold:#f1e2c4; --note-pink:#ffd9ec; --note-mint:#c7f4da; --note-green:#cfe9dd;
+  --note-gold:#f1e2c4; --note-pink:#ffd9ec; --note-mint:#e3f1ea; --note-green:#cfe9dd;
   --shadow:0 24px 60px -28px rgba(43,30,20,.5), 0 6px 18px -10px rgba(43,30,20,.28);
   --shadow-sm:0 12px 30px -18px rgba(43,30,20,.45);
   --radius:22px;
@@ -72,7 +72,7 @@ body{
 img{display:block;max-width:100%;}
 a{color:inherit;text-decoration:none;}
 .fred{font-family:'Fraunces',serif;}
-.hand{font-family:'Caveat',cursive;}
+.hand{font-family:'Fraunces',serif;font-style:italic;}
 
 .blob{position:fixed;border-radius:50%;filter:blur(64px);opacity:.45;z-index:0;pointer-events:none;}
 .blob.b1{width:380px;height:380px;background:#f7a8d0;top:18%;left:-90px;}
@@ -112,17 +112,17 @@ a{color:inherit;text-decoration:none;}
   background:rgba(255,255,255,.6);border-bottom:1px solid var(--line);}
 .dots{display:flex;gap:.4rem;}
 .dots i{width:11px;height:11px;border-radius:50%;display:block;}
-.dots i:nth-child(1){background:#ff5f57;}.dots i:nth-child(2){background:#febc2e;}.dots i:nth-child(3){background:#28c840;}
+.dots i:nth-child(1){background:#f25ca2;}.dots i:nth-child(2){background:#f7a3ca;}.dots i:nth-child(3){background:#2e7d5b;}
 .win-title{font-size:.74rem;font-weight:600;color:var(--ink-soft);margin-left:.3rem;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .win-body{padding:1.4rem 1.5rem;}
 
 /* ===== sticky note ===== */
 .note{background:var(--note-gold);border-radius:6px 14px 10px 12px;padding:1.05rem 1.15rem;
-  box-shadow:var(--shadow-sm);font-family:'Caveat',cursive;font-size:1.28rem;line-height:1.3;color:#6b5526;
+  box-shadow:var(--shadow-sm);font-family:'Fraunces',serif;font-style:italic;font-size:1.28rem;line-height:1.3;color:#6b5526;
   position:relative;}
 .note.pink{background:var(--note-pink);color:#b03a72;}
-.note.mint{background:var(--note-mint);color:#15663f;}
+.note.mint{background:var(--note-mint);color:#1f5e43;}
 .note.green{background:var(--note-green);color:#1c5e42;}
 .note::before{content:"";position:absolute;top:-9px;left:50%;transform:translateX(-50%) rotate(-4deg);
   width:62px;height:18px;background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.7);border-radius:2px;}
@@ -131,7 +131,7 @@ a{color:inherit;text-decoration:none;}
 .polaroid{background:#fff;padding:.55rem .55rem 1.7rem;border-radius:6px;box-shadow:var(--shadow);}
 .polaroid img{width:100%;height:auto;border-radius:3px;object-fit:cover;}
 img{max-width:100%;}
-.polaroid .cap{font-family:'Caveat',cursive;font-size:1.2rem;text-align:center;margin-top:.45rem;color:#6b6470;}
+.polaroid .cap{font-family:'Fraunces',serif;font-style:italic;font-size:1.2rem;text-align:center;margin-top:.45rem;color:#6b6470;}
 
 /* ===== HERO ===== */
 #hero{padding-top:.5rem;position:relative;isolation:isolate;}
@@ -151,7 +151,7 @@ img{max-width:100%;}
 .hero-cover{position:relative;z-index:1;display:flex;align-items:center;
   min-height:clamp(400px,54vh,540px);padding:2.4rem 2.2rem;}
 .hero-copy{max-width:min(580px,100%);}
-.hero-claim{font-family:'Caveat',cursive;font-size:1.42rem;line-height:1.3;color:#b03a72;
+.hero-claim{font-family:'Fraunces',serif;font-style:italic;font-size:1.42rem;line-height:1.3;color:#b03a72;
   margin-top:1.35rem;max-width:440px;
   text-shadow:0 1px 10px rgba(251,245,240,.95),0 0 20px rgba(251,245,240,.85);}
 .hero-claim em{font-style:normal;color:var(--green);}
@@ -239,7 +239,7 @@ img{max-width:100%;}
 .bar-row .top{display:flex;justify-content:space-between;font-size:.82rem;margin-bottom:.25rem;}
 .bar-row .top b{font-family:'Fraunces',serif;font-weight:600;color:var(--pink);}
 .track{height:8px;background:#f1e7e0;border-radius:99px;overflow:hidden;}
-.track>span{display:block;height:100%;background:linear-gradient(90deg,var(--pink),var(--green));border-radius:99px;}
+.track>span{display:block;height:100%;background:var(--pink);border-radius:99px;}
 
 /* ===== nano ===== */
 .nano-cards{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;}
@@ -253,13 +253,14 @@ img{max-width:100%;}
 .app .icon{width:64px;height:64px;margin:0 auto;border-radius:16px;display:flex;align-items:center;
   justify-content:center;box-shadow:var(--shadow-sm);color:#fff;}
 .app .emoji{font-size:1.55rem;}
+.app .icon{background:#FFE3F0;}
 .app .nm{font-size:.78rem;font-weight:600;margin-top:.55rem;}
 .app .ds{font-size:.68rem;color:var(--ink-soft);line-height:1.35;margin-top:.15rem;}
-.app:nth-child(1) .icon{background:linear-gradient(150deg,#ff8ec4,#f25ca2);}
-.app:nth-child(2) .icon{background:linear-gradient(150deg,#4fb487,#2e7d5b);}
-.app:nth-child(3) .icon{background:linear-gradient(150deg,#ddc596,#c9a66b);}
-.app:nth-child(4) .icon{background:linear-gradient(150deg,#8df0b6,#5de490);color:#1c5e42;}
-.app:nth-child(5) .icon{background:linear-gradient(150deg,#4a4a4a,#2b2b2b);}
+
+
+
+
+
 .chips{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:.2rem;}
 .chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:.5rem .95rem;font-size:.8rem;font-weight:500;box-shadow:var(--shadow-sm);}
 .chip .e{margin-right:.35rem;}
@@ -313,7 +314,7 @@ img{max-width:100%;}
 .deliver .dd{font-size:.82rem;color:var(--ink-soft);line-height:1.5;}
 .gains{background:linear-gradient(165deg,#2b2b2b,#1c1c1c);color:#fff;border-radius:var(--radius);padding:1.6rem;box-shadow:var(--shadow);}
 .gains h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;}
-.gains .sub{font-family:'Caveat',cursive;font-size:1.35rem;color:var(--mint);margin:.2rem 0 1rem;}
+.gains .sub{font-family:'Fraunces',serif;font-style:italic;font-size:1.35rem;color:var(--mint);margin:.2rem 0 1rem;}
 .gains ul{list-style:none;}
 .gains li{padding:.8rem 0;border-top:1px solid rgba(255,255,255,.14);}
 .gains li:first-child{border-top:none;}
@@ -367,7 +368,7 @@ img{max-width:100%;}
 .brand{background:#fff;border:1px solid var(--line);border-radius:14px;padding:.7rem 1.1rem;font-size:.86rem;
   font-weight:600;box-shadow:var(--shadow-sm);transition:.18s;}
 .brand:hover{transform:translateY(-3px);}
-.brand.open{border:1.5px dashed var(--pink);color:var(--pink);background:transparent;font-family:'Caveat',cursive;font-size:1.15rem;}
+.brand.open{border:1.5px dashed var(--pink);color:var(--pink);background:transparent;font-family:'Fraunces',serif;font-style:italic;font-size:1.15rem;}
 
 /* ===== carrossel de logos ===== */
 .brands-row{display:flex;align-items:flex-start;gap:1rem;margin-top:1.1rem;}
@@ -462,13 +463,13 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
 .folder.active{background:var(--soft-pink)}
 .folder-ic{position:relative;width:58px;height:44px;filter:drop-shadow(0 4px 7px rgba(0,0,0,.16))}
 .folder-ic::before{content:"";position:absolute;top:0;left:7px;width:26px;height:9px;background:#caa766;border-radius:5px 8px 0 0}
-.folder-ic::after{content:"";position:absolute;top:7px;left:0;width:58px;height:37px;background:linear-gradient(160deg,#e3c188,#c9a66b);border-radius:4px 7px 7px 7px}
+.folder-ic::after{content:"";position:absolute;top:7px;left:0;width:58px;height:37px;background:linear-gradient(160deg,#f7a3ca,#f25ca2);border-radius:4px 7px 7px 7px}
 .folder-nm{font-family:'Inter',sans-serif;font-size:.72rem;font-weight:600;color:var(--ink);line-height:1.1;text-align:center}
 .folder-ct{position:absolute;top:.3rem;right:.5rem;background:var(--pink);color:#fff;font-size:.6rem;font-weight:700;min-width:16px;height:16px;border-radius:9px;display:flex;align-items:center;justify-content:center;padding:0 4px;z-index:2}
-.folder-hint{font-family:'Caveat',cursive;font-size:1.05rem;color:var(--ink-soft);margin:.5rem 0 0;text-align:center;min-height:1.2rem}
+.folder-hint{font-family:'Fraunces',serif;font-style:italic;font-size:1.05rem;color:var(--ink-soft);margin:.5rem 0 0;text-align:center;min-height:1.2rem}
 .vcard{cursor:pointer}
 .vcard[hidden]{display:none}
-.vflag{position:absolute;left:.55rem;bottom:.55rem;z-index:3;background:#e8a13a;color:#fff;font-family:'Inter',sans-serif;font-size:.58rem;font-weight:700;padding:.2rem .5rem;border-radius:8px;box-shadow:0 4px 10px -3px rgba(0,0,0,.4)}
+.vflag{position:absolute;left:.55rem;bottom:.55rem;z-index:3;background:#C9327A;color:#fff;font-family:'Inter',sans-serif;font-size:.58rem;font-weight:700;padding:.2rem .5rem;border-radius:8px;box-shadow:0 4px 10px -3px rgba(0,0,0,.4)}
 .vmodal{position:fixed;inset:0;z-index:999;display:none;align-items:center;justify-content:center;padding:1.1rem}
 .vmodal.open{display:flex}
 .vmodal-back{position:absolute;inset:0;background:rgba(22,12,18,.62);backdrop-filter:blur(3px)}
@@ -491,8 +492,8 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
 .side{display:flex;align-items:center;gap:.55rem;background:transparent;border:0;cursor:pointer;width:100%;text-align:left;padding:.42rem .55rem;border-radius:8px;font-family:'Inter',sans-serif;font-size:.82rem;font-weight:500;color:var(--ink);transition:.15s}
 .side:hover{background:rgba(0,0,0,.05)}
 .side.active{background:var(--pink);color:#fff}
-.side-ic{width:15px;height:13px;border-radius:3px 4px 4px 4px;background:var(--c,#c9a66b);position:relative;flex:0 0 auto}
-.side-ic::before{content:"";position:absolute;top:-2px;left:2px;width:6px;height:3px;background:var(--c,#c9a66b);border-radius:2px 2px 0 0}
+.side-ic{width:15px;height:13px;border-radius:3px 4px 4px 4px;background:var(--c,#f25ca2);position:relative;flex:0 0 auto}
+.side-ic::before{content:"";position:absolute;top:-2px;left:2px;width:6px;height:3px;background:var(--c,#f25ca2);border-radius:2px 2px 0 0}
 .side-ic.ic-recent{background:var(--gold);border-radius:50%}
 .side-ic.ic-recent::before{display:none}
 .side.active .side-ic,.side.active .side-ic::before{box-shadow:0 0 0 2px rgba(255,255,255,.45)}
@@ -626,9 +627,9 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
     <nav class="menu-nav" id="menuNav">
       <a href="#sobre"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><span>Sobre</span></a>
       <a href="#metricas"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V11M12 20V4M19 20v-6"/></svg><span>Métricas</span></a>
-      <a href="#marcas"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><span>Marcas</span></a>
       <a href="#nichos" class="tab-x"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="1.8"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.8"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.8"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.8"/></svg><span>Nichos</span></a>
       <a href="#portfolio"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-8 8"/></svg><span>Portfólio</span></a>
+      <a href="#marcas"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><span>Marcas</span></a>
       <a href="#entrego" class="tab-x"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 6h10M10 12h10M10 18h10"/><path d="M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></svg><span>Processo</span></a>
       <a href="#contato" class="cta"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4A8 8 0 1 1 20 12z"/></svg><span>Contato</span></a>
     </nav>
@@ -649,15 +650,15 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
     </div>
     <div class="hero-cover">
       <div class="hero-copy reveal">
-        <span class="hero-eyebrow">📌 Mídia Kit · Outubro 2026</span>
+        <span class="hero-eyebrow">📌 Mídia Kit 2026</span>
         <h1 class="hero-name"><span class="l1">Jheniffer</span><br><span class="l2">Lima</span></h1>
         <div class="hero-role">Influenciadora &amp; UGC Creator</div>
-        <div class="hero-metrics">
-          <div class="mtile"><div class="n">64,8 mil</div><div class="l">visualizações no mês</div></div>
-          <div class="mtile"><div class="n b">8,8%</div><div class="l">engajamento</div></div>
-          <div class="mtile"><div class="n p">59,4%</div><div class="l">na Grande Floripa</div></div>
+        <p class="hero-pos">O autocuidado cabe na rotina</p>
+        <div class="hero-kpi">
+          <div class="kpi-row"><div class="kpi-n">8,8%</div><div class="kpi-txt"><div class="kpi-l">de engajamento</div><div class="kpi-c">a média do mercado fica entre 3% e 5%</div></div></div>
+          <div class="kpi-sub"><span><b>64,8 mil</b>visualizações no mês</span><span><b>59,4%</b>na Grande Floripa</span></div>
         </div>
-        <p class="hero-claim">Sua marca recomendada por uma <em>voz</em> que a audiência realmente ouve e responde 💗</p>
+        <p class="hero-motto">A vida boa cabe na vida real 🌟</p>
         <div class="hero-ctas"><a href="#contato" class="ios-btn">Vamos conversar</a><a href="#portfolio" class="ios-btn ghost">Ver portfólio</a></div>
       </div>
     </div>
@@ -673,8 +674,8 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
       <div class="stack reveal">
         <div class="win">
           <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-title">Notas</span></div>
-          <div class="win-body notes-body"><div class="notes-date">Outubro 2026</div>
-            <p class="about-p"><span class="drop">Pode me chamar de Jheni.</span> Tenho 27 anos, sou de São José (a famosa Grande Floripa, em Santa Catarina). Sou influenciadora e trabalho também com UGC, apaixonada por uma lente de câmera e com um talento especial pra achar graça e beleza nas coisas simples da rotina.</p>
+          <div class="win-body notes-body">
+            <p class="about-p"><span class="drop">Pode me chamar de Jheni.</span> Tenho 28 anos, sou de São José (a famosa Grande Floripa), em Santa Catarina. Sou influenciadora e trabalho também com UGC, apaixonada por uma lente de câmera e com um talento especial pra achar graça e beleza nas coisas simples da rotina.</p>
             <p class="about-p">Hoje meus nichos conversam com quem eu sou: skincare, maquiagem e o mundo da beleza sempre estiveram presentes no meu dia a dia, e sempre estive em busca de entender mais sobre o assunto.</p>
             <p class="about-p">Além de criadora de conteúdo, tenho a rotina de uma CLT, o que conversa muito com a minha comunidade, que gosta de acompanhar como encaixar certas coisas na rotina corrida, sabe?! Aí entra o lifestyle, que gera uma identificação enorme com quem me acompanha.</p>
           </div>
@@ -689,14 +690,15 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
     <div class="win reveal" style="margin-top:1.1rem;">
       <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-title">📊 Analytics · Instagram · setembro 2026</span></div>
       <div class="win-body">
-        <div class="stat-grid">
-          <div class="stat key"><div class="num">64.779</div><div class="unit">Visualizações</div><div class="ctx">Conteúdo visto cerca de 47x a base de seguidores</div></div>
+        <div class="stat-grid v2">
+          <div class="stat hero-stat"><div class="num">8,8%</div><div class="unit">Taxa de engajamento</div><div class="ctx">Subiu de 7,4% pra 8,8% em um mês. A média do mercado fica entre 3% e 5%</div></div>
+          <div class="stat"><div class="num">64.779</div><div class="unit">Visualizações</div><div class="ctx">Conteúdo visto cerca de 47x a base de seguidores</div></div>
           <div class="stat"><div class="num">24.643</div><div class="unit">Contas alcançadas</div><div class="ctx">Mais da metade das visualizações veio de quem ainda não me segue</div></div>
           <div class="stat"><div class="num">2.178</div><div class="unit">Interações</div><div class="ctx">60% vindas de quem já me segue: comunidade que volta e conversa</div></div>
-          <div class="stat key"><div class="num">8,8%</div><div class="unit">Taxa de engajamento</div><div class="ctx">Subiu de 7,4% pra 8,8% em um mês. A média do mercado fica entre 3% e 5%</div></div>
-          <div class="stat"><div class="num">59,4%</div><div class="unit">Audiência local</div><div class="ctx">Quase 60% do público vive na Grande Floripa</div></div>
-          <div class="stat"><div class="num">1.382</div><div class="unit">Seguidores</div><div class="ctx">+40 seguidores em setembro, crescimento 100% orgânico</div></div>
+          <div class="stat"><div class="num">1.388</div><div class="unit">Seguidores</div><div class="ctx">+40 seguidores em setembro, crescimento 100% orgânico</div></div>
         </div>
+
+        <p class="community">Minha comunidade é formada por mulheres de 25 a 44 anos, com um público majoritariamente regional (59,4% na Grande Florianópolis), que buscam uma boa indicação e uma conversa de amiga 💖</p>
 
         <div class="chart-row">
           <div class="donut-card">
@@ -712,13 +714,13 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
           <div class="donut-card">
             <h4>Faixa etária</h4>
             <div class="donut-wrap">
-              <div class="donut" style="background:conic-gradient(var(--pink) 0 54.1%, var(--green) 54.1% 77.8%, var(--gold) 77.8% 86.7%, var(--mint) 86.7% 94.6%, #ffd0e6 94.6% 100%);"></div>
+              <div class="donut" style="background:conic-gradient(var(--pink) 0 54.1%, var(--green) 54.1% 77.8%, var(--gold) 77.8% 86.7%, var(--mint) 86.7% 94.6%, #ddd6d2 94.6% 100%);"></div>
               <div class="legend">
                 <div class="row"><span class="sw" style="background:var(--pink)"></span>25-34 <b>54,1%</b></div>
                 <div class="row"><span class="sw" style="background:var(--green)"></span>35-44 <b>23,7%</b></div>
                 <div class="row"><span class="sw" style="background:var(--gold)"></span>45-54 <b>8,9%</b></div>
                 <div class="row"><span class="sw" style="background:var(--mint)"></span>18-24 <b>7,9%</b></div>
-                <div class="row"><span class="sw" style="background:#ffd0e6"></span>Outras <b>5,4%</b></div>
+                <div class="row"><span class="sw" style="background:#ddd6d2"></span>Outras <b>5,4%</b></div>
               </div>
             </div>
           </div>
@@ -734,15 +736,90 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
             <div class="bar-row"><div class="top"><span>Biguaçu (SC)</span><b>2,7%</b></div><div class="track"><span style="width:7%"></span></div></div>
           </div>
           <p style="font-size:.74rem;color:var(--green);margin-top:.9rem;">⌖ Grande Florianópolis somada: <strong>59,4%</strong> · Dados do Instagram Insights, setembro/2026. Nada estimado, nada inflado.</p>
-          <div class="note mint" style="margin-top:1.1rem;">Não é sobre quantos me seguem. É sobre quantos param, confiam e vão atrás 🌟</div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- NICHOS -->
+  <section class="scene" id="nichos">
+    <span class="scene-tag reveal"><b>03</b> · Nichos</span>
+    <div class="win reveal" style="margin-top:1.1rem;">
+      <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-title">o que você vai encontrar</span></div>
+      <div class="win-body homescr">
+        <div class="apps">
+          <div class="app"><div class="icon"><span class="emoji">🧴</span></div><div class="nm">Skincare</div><div class="ds">Cuidados com a pele e opiniões sinceras</div></div>
+          <div class="app"><div class="icon"><span class="emoji">💄</span></div><div class="nm">Maquiagem</div><div class="ds">Tutoriais, reviews e makes criativas</div></div>
+          <div class="app"><div class="icon"><span class="emoji">💇‍♀️</span></div><div class="nm">Haircare</div><div class="ds">Rotina de cuidado e resultado real no cabelo</div></div>
+          <div class="app"><div class="icon"><span class="emoji">🔎</span></div><div class="nm">Reviews &amp; Testes</div><div class="ds">Opiniões honestas sobre o que entrega</div></div>
+          <div class="app"><div class="icon"><span class="emoji">🎬</span></div><div class="nm">UGC</div><div class="ds">Conteúdo sem cara de anúncio</div></div>
+        </div>
+        <div class="also"><p class="also-k">Também aparece no perfil</p>
+        <div class="chips">
+          <span class="chip"><span class="e">🏡</span>Casa Nova</span>
+          <span class="chip"><span class="e">😂</span>Humor</span>
+          <span class="chip"><span class="e">🎥</span>Mini Vlogs</span>
+          <span class="chip"><span class="e">✈️</span>Turismo</span>
+          <span class="chip"><span class="e">🍝</span>Gastronomia</span>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="scene" id="portfolio">
+    <span class="scene-tag reveal"><b>04</b> · Portfólio</span>
+    <h2 class="fred reveal" style="font-size:1.5rem;margin:.9rem 0 1.1rem;">Conteúdos que <span style="color:var(--pink)">conectam</span> 📸</h2>
+    <div class="win finder reveal">
+      <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-title" id="finderLoc">Recentes</span><span class="win-views"><i class="vw active"></i><i class="vw"></i></span></div>
+      <div class="win-body finder-body">
+        <div class="ph-head">Álbuns</div>
+        <aside class="finder-side">
+          <button class="side active" data-folder="all"><span class="side-ic ic-recent"></span>Recentes</button>
+          <div class="side-grp">Tópicos</div>
+          <button class="side" data-folder="maquiagem"><span class="side-ic" style="--c:#f25ca2"></span>Maquiagem</button>
+          <button class="side" data-folder="skincare"><span class="side-ic" style="--c:#2e7d5b"></span>Skincare</button>
+          <button class="side" data-folder="haircare"><span class="side-ic" style="--c:#f7a3ca"></span>Haircare</button>
+          <button class="side" data-folder="ugc"><span class="side-ic" style="--c:#8fc2ab"></span>UGC</button>
+          <button class="side" data-folder="unboxing"><span class="side-ic" style="--c:#f25ca2"></span>Unboxing</button>
+          <button class="side" data-folder="lifestyle"><span class="side-ic" style="--c:#2e7d5b"></span>Lifestyle</button>
+          <button class="side" data-folder="gastronomia"><span class="side-ic" style="--c:#f7a3ca"></span>Gastronomia</button>
+        </aside>
+        <div class="finder-main">
+        <div class="vidgrid" id="vidgrid">
+      <div class="vcard" data-id="1240425009" data-niche="lifestyle"><img width="720" height="1280" loading="lazy" decoding="async" alt="Pop up SHEIN no Floripa Shopping"/></div>
+      <div class="vcard" data-id="1238867958" data-niche="gastronomia"><img width="720" height="1280" loading="lazy" decoding="async" alt="Promoção Lual · Pastel da Semana"/></div>
+      <div class="vcard" data-id="1238867736" data-niche="maquiagem lifestyle"><img width="720" height="1280" loading="lazy" decoding="async" alt="Guava · Pincel Encaixe Perfeito"/></div>
+      <div class="vcard" data-id="1238866951" data-niche="haircare"><img width="720" height="1280" loading="lazy" decoding="async" alt="Pantene · Sérum Bambu"/></div>
+      <div class="vcard" data-id="1238892577" data-niche="haircare"><img width="720" height="1280" loading="lazy" decoding="async" alt="Combo L'Oréal"/></div>
+      <div class="vcard" data-id="1189236915" data-niche="maquiagem"><img width="720" height="1280" loading="lazy" decoding="async" alt="Make gravada no ônibus"/></div>
+      <div class="vcard" data-id="1189236926" data-niche="maquiagem"><img width="720" height="1280" loading="lazy" decoding="async" alt="Apresentação de produtos"/></div>
+      <div class="vcard" data-id="1205790069" data-niche="maquiagem"><img width="720" height="1280" loading="lazy" decoding="async" alt="Make up With Me"/></div>
+      <div class="vcard" data-id="1195825121" data-niche="skincare"><img width="720" height="1280" loading="lazy" decoding="async" alt="Review Calming Creamy"/></div>
+      <div class="vcard" data-id="1205788376" data-niche="skincare"><img width="720" height="1280" loading="lazy" decoding="async" alt="Skincare"/></div>
+      <div class="vcard" data-id="1189232679" data-niche="haircare"><img width="720" height="1280" loading="lazy" decoding="async" alt="Teste Elseve Colágeno Lifter"/></div>
+      <div class="vcard" data-id="1213586737" data-niche="haircare"><img width="720" height="1280" loading="lazy" decoding="async" alt="Retoque Mágico"/></div>
+      <div class="vcard" data-id="1189226824" data-niche="ugc"><img width="720" height="1280" loading="lazy" decoding="async" alt="UGC institucional · BigBoom"/></div>
+      <div class="vcard" data-id="1194501100" data-niche="ugc"><img width="720" height="1280" loading="lazy" decoding="async" alt="UGC · Apresentação do Produto"/></div>
+      <div class="vcard" data-id="1189236899" data-niche="unboxing"><img width="720" height="1280" loading="lazy" decoding="async" alt="Unboxing produtos Dior"/></div>
+      <div class="vcard" data-id="1199466857" data-niche="unboxing"><img width="720" height="1280" loading="lazy" decoding="async" alt="Unboxing Dove UV Repair & Glow + Ferúlico"/></div>
+      <div class="vcard" data-id="1205792855" data-niche="unboxing"><img width="720" height="1280" loading="lazy" decoding="async" alt="Unboxing Souu"/></div>
+      <div class="vcard" data-id="1189226790" data-niche="lifestyle"><img width="720" height="1280" loading="lazy" decoding="async" alt="Treino com creatina BigBoom"/></div>
+      <div class="vcard" data-id="1205789379" data-niche="lifestyle"><img width="720" height="1280" loading="lazy" decoding="async" alt="Arrume-se comigo"/></div>
+      <div class="vcard" data-id="1205791947" data-niche="gastronomia"><img width="720" height="1280" loading="lazy" decoding="async" alt="Gastronomia"/></div>
+      <a class="vcta" href="#contato" hidden><span class="vcta-t">sua<br/>marca<br/>aqui</span><span class="vcta-s">vamos conversar 🌟</span></a>
+      <div class="vcard wide" data-id="1189226828" data-niche="lifestyle"><img width="720" height="1280" loading="lazy" decoding="async" alt="Vlog com produtos do dia"/></div>
+    </div>
+        <p class="folder-hint" id="folderHint"></p>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:.78rem;font-style:italic;color:var(--ink-soft);margin-top:1rem;">* Alguns conteúdos foram criados de forma independente, sem parceria comercial.</p>
+  </section>
+
   <!-- MARCAS -->
   <section class="scene" id="marcas">
-    <span class="scene-tag reveal"><b>03</b> · Marcas</span>
+    <span class="scene-tag reveal"><b>05</b> · Marcas</span>
     <div class="win reveal" style="margin-top:1.1rem;">
       <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-title">marcas que já confiaram</span></div>
       <div class="win-body">
@@ -775,81 +852,6 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
     </div>
   </section>
 
-  <!-- NICHOS -->
-  <section class="scene" id="nichos">
-    <span class="scene-tag reveal"><b>04</b> · Nichos</span>
-    <div class="win reveal" style="margin-top:1.1rem;">
-      <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-title">o que você vai encontrar</span></div>
-      <div class="win-body homescr">
-        <div class="apps">
-          <div class="app"><div class="icon"><span class="emoji">🧴</span></div><div class="nm">Skincare</div><div class="ds">Cuidados com a pele e opiniões sinceras</div></div>
-          <div class="app"><div class="icon"><span class="emoji">💄</span></div><div class="nm">Maquiagem</div><div class="ds">Tutoriais, reviews e makes criativas</div></div>
-          <div class="app"><div class="icon"><span class="emoji">💇‍♀️</span></div><div class="nm">Haircare</div><div class="ds">Rotina de cuidado e resultado real no cabelo</div></div>
-          <div class="app"><div class="icon"><span class="emoji">🔎</span></div><div class="nm">Reviews &amp; Testes</div><div class="ds">Opiniões honestas sobre o que entrega</div></div>
-          <div class="app"><div class="icon"><span class="emoji">🎬</span></div><div class="nm">UGC</div><div class="ds">Conteúdo sem cara de anúncio</div></div>
-        </div>
-        <div class="also"><p class="also-k">Também aparece no perfil</p>
-        <div class="chips">
-          <span class="chip"><span class="e">🏡</span>Casa Nova</span>
-          <span class="chip"><span class="e">😂</span>Humor</span>
-          <span class="chip"><span class="e">🎥</span>Mini Vlogs</span>
-          <span class="chip"><span class="e">✈️</span>Turismo</span>
-          <span class="chip"><span class="e">🍝</span>Gastronomia</span>
-        </div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PORTFOLIO -->
-  <section class="scene" id="portfolio">
-    <span class="scene-tag reveal"><b>05</b> · Portfólio</span>
-    <h2 class="fred reveal" style="font-size:1.5rem;margin:.9rem 0 1.1rem;">Conteúdos que <span style="color:var(--pink)">conectam</span> 📸</h2>
-    <div class="win finder reveal">
-      <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-title" id="finderLoc">Recentes</span><span class="win-views"><i class="vw active"></i><i class="vw"></i></span></div>
-      <div class="win-body finder-body">
-        <div class="ph-head">Álbuns</div>
-        <aside class="finder-side">
-          <button class="side active" data-folder="all"><span class="side-ic ic-recent"></span>Recentes</button>
-          <div class="side-grp">Tópicos</div>
-          <button class="side" data-folder="maquiagem"><span class="side-ic" style="--c:#f25ca2"></span>Maquiagem</button>
-          <button class="side" data-folder="skincare"><span class="side-ic" style="--c:#5de490"></span>Skincare</button>
-          <button class="side" data-folder="haircare"><span class="side-ic" style="--c:#c9a66b"></span>Haircare</button>
-          <button class="side" data-folder="ugc"><span class="side-ic" style="--c:#2e7d5b"></span>UGC</button>
-          <button class="side" data-folder="unboxing"><span class="side-ic" style="--c:#e8a13a"></span>Unboxing</button>
-          <button class="side" data-folder="lifestyle"><span class="side-ic" style="--c:#e0719e"></span>Lifestyle</button>
-          <button class="side" data-folder="gastronomia"><span class="side-ic" style="--c:#d96b6b"></span>Gastronomia</button>
-        </aside>
-        <div class="finder-main">
-        <div class="vidgrid" id="vidgrid">
-      <div class="vcard" data-id="1238867958" data-niche="gastronomia"><img width="720" height="1280" loading="lazy" decoding="async" alt="Promoção Lual · Pastel da Semana"/></div>
-      <div class="vcard" data-id="1238867736" data-niche="maquiagem lifestyle"><img width="720" height="1280" loading="lazy" decoding="async" alt="Guava · Pincel Encaixe Perfeito"/></div>
-      <div class="vcard" data-id="1238866951" data-niche="haircare"><img width="720" height="1280" loading="lazy" decoding="async" alt="Pantene · Sérum Bambu"/></div>
-      <div class="vcard" data-id="1238892577" data-niche="haircare"><img width="720" height="1280" loading="lazy" decoding="async" alt="Combo L'Oréal"/></div>
-      <div class="vcard" data-id="1189236915" data-niche="maquiagem"><img width="720" height="1280" loading="lazy" decoding="async" alt="Make gravada no ônibus"/></div>
-      <div class="vcard" data-id="1189236926" data-niche="maquiagem"><img width="720" height="1280" loading="lazy" decoding="async" alt="Apresentação de produtos"/></div>
-      <div class="vcard" data-id="1205790069" data-niche="maquiagem"><img width="720" height="1280" loading="lazy" decoding="async" alt="Make up With Me"/></div>
-      <div class="vcard" data-id="1195825121" data-niche="skincare"><img width="720" height="1280" loading="lazy" decoding="async" alt="Review Calming Creamy"/></div>
-      <div class="vcard" data-id="1205788376" data-niche="skincare"><img width="720" height="1280" loading="lazy" decoding="async" alt="Skincare"/></div>
-      <div class="vcard" data-id="1189232679" data-niche="haircare"><img width="720" height="1280" loading="lazy" decoding="async" alt="Teste Elseve Colágeno Lifter"/></div>
-      <div class="vcard" data-id="1213586737" data-niche="haircare"><img width="720" height="1280" loading="lazy" decoding="async" alt="Retoque Mágico"/></div>
-      <div class="vcard" data-id="1189226824" data-niche="ugc"><img width="720" height="1280" loading="lazy" decoding="async" alt="UGC institucional · BigBoom"/></div>
-      <div class="vcard" data-id="1194501100" data-niche="ugc"><img width="720" height="1280" loading="lazy" decoding="async" alt="UGC · Apresentação do Produto"/></div>
-      <div class="vcard" data-id="1189236899" data-niche="unboxing"><img width="720" height="1280" loading="lazy" decoding="async" alt="Unboxing produtos Dior"/></div>
-      <div class="vcard" data-id="1199466857" data-niche="unboxing"><img width="720" height="1280" loading="lazy" decoding="async" alt="Unboxing Dove UV Repair & Glow + Ferúlico"/></div>
-      <div class="vcard" data-id="1205792855" data-niche="unboxing"><img width="720" height="1280" loading="lazy" decoding="async" alt="Unboxing Souu"/></div>
-      <div class="vcard" data-id="1189226790" data-niche="lifestyle"><img width="720" height="1280" loading="lazy" decoding="async" alt="Treino com creatina BigBoom"/></div>
-      <div class="vcard" data-id="1205789379" data-niche="lifestyle"><img width="720" height="1280" loading="lazy" decoding="async" alt="Arrume-se comigo"/></div>
-      <div class="vcard" data-id="1205791947" data-niche="gastronomia"><img width="720" height="1280" loading="lazy" decoding="async" alt="Gastronomia"/></div>
-      <a class="vcta" href="#contato" hidden><span class="vcta-t">sua<br/>marca<br/>aqui</span><span class="vcta-s">vamos conversar 🌟</span></a>
-      <div class="vcard wide" data-id="1189226828" data-niche="lifestyle"><img width="720" height="1280" loading="lazy" decoding="async" alt="Vlog com produtos do dia"/></div>
-    </div>
-        <p class="folder-hint" id="folderHint"></p>
-        </div>
-      </div>
-    </div>
-    <p style="font-size:.78rem;font-style:italic;color:var(--ink-soft);margin-top:1rem;">* Alguns conteúdos foram criados de forma independente, sem parceria comercial.</p>
-  </section>
-
   <!-- PROCESSO (entregas + etapas) -->
   <section class="scene" id="entrego">
     <span class="scene-tag reveal"><b>06</b> · Processo</span>
@@ -874,6 +876,7 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
               <li><button type="button" class="ios-item" aria-pressed="false"><span class="tick" aria-hidden="true"></span><span class="txt"><b>Criação</b>Prazo ideal de 7 dias pra gravar e editar com calma, e sempre que dá eu testo o produto antes. O prazo pode ser ajustado conforme o contrato, é só a gente conversar.</span></button></li>
               <li><button type="button" class="ios-item" aria-pressed="false"><span class="tick" aria-hidden="true"></span><span class="txt"><b>Entrega</b>Material cru ou já editado com legendas, como você preferir. Se quiser, mando o print dos Insights depois.</span></button></li>
           </ul>
+          <p class="price-note">Valores e pacotes sob consulta: me conta sua ideia que eu envio uma proposta pensada pra sua campanha em até 48h 🌟</p>
         </div>
       </div>
     </div>
@@ -882,7 +885,7 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
   <!-- CONTATO -->
   <section class="scene" id="contato">
     <span class="scene-tag reveal"><b>07</b> · Contato</span>
-    <h2 class="fred reveal" style="font-size:1.7rem;margin:.9rem 0 1.2rem;">Manda uma <span style="color:var(--pink)">mensagem</span> 💌</h2>
+    <h2 class="fred reveal contact-title">Sua marca recomendada por uma <span style="color:var(--pink)">voz</span> que a audiência realmente ouve e responde 💗</h2>
     <div class="contact-grid">
       <div class="win reveal">
         <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-title">Mensagens · Jheni</span></div>
@@ -1181,7 +1184,15 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
 <script>
 (function(){
   var DICT={
-    en:{"Vamos conversar":"Let's talk","Ver portfólio":"See portfolio","Notas":"Notes","Lembretes":"Reminders","Álbuns":"Albums","Outubro 2026":"October 2026",
+    en:{"Vamos conversar":"Let's talk",
+      "📌 Mídia Kit 2026":"📌 Media Kit 2026",
+      "O autocuidado cabe na rotina":"Self-care fits into the routine",
+      "de engajamento":"engagement rate",
+      "a média do mercado fica entre 3% e 5%":"the market average sits between 3% and 5%",
+      "A vida boa cabe na vida real 🌟":"The good life fits into real life 🌟",
+      "Minha comunidade é formada por mulheres de 25 a 44 anos, com um público majoritariamente regional (59,4% na Grande Florianópolis), que buscam uma boa indicação e uma conversa de amiga 💖":"My community is made up of women aged 25 to 44, with a mostly local audience (59.4% in Greater Florianópolis), who look for a good recommendation and a chat between friends 💖",
+      "Valores e pacotes sob consulta: me conta sua ideia que eu envio uma proposta pensada pra sua campanha em até 48h 🌟":"Rates and packages on request: tell me your idea and I'll send a proposal designed for your campaign within 48h 🌟",
+      "Ver portfólio":"See portfolio","Notas":"Notes","Lembretes":"Reminders","Álbuns":"Albums","Outubro 2026":"October 2026",
       "Influenciadora & UGC Creator":"Influencer & UGC Creator",
       "Sobre":"About","Métricas":"Metrics","Nichos":"Niches","Portfólio":"Portfolio",
       "Entrego":"Deliverables","Processo":"Process","Marcas":"Brands","Contato":"Contact",
@@ -1192,7 +1203,7 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
       "que a audiência realmente ouve e responde 💗":"that the audience truly listens to and answers 💗",
       "· Sobre":"· About","conheça a Jheni":"meet Jheni","sobre_a_jheni.txt":"about_jheni.txt",
       "Pode me chamar de Jheni.":"You can call me Jheni.",
-      "Tenho 27 anos, sou de São José (a famosa Grande Floripa, em Santa Catarina). Sou influenciadora e trabalho também com UGC, apaixonada por uma lente de câmera e com um talento especial pra achar graça e beleza nas coisas simples da rotina.":"I'm 27, from São José, in Santa Catarina, Brazil. I'm an influencer and I also work with UGC, in love with a camera lens and with a real talent for finding charm and beauty in the simplest parts of everyday life.",
+      "Tenho 28 anos, sou de São José (a famosa Grande Floripa), em Santa Catarina. Sou influenciadora e trabalho também com UGC, apaixonada por uma lente de câmera e com um talento especial pra achar graça e beleza nas coisas simples da rotina.":"I'm 28, from São José, in Santa Catarina, Brazil. I'm an influencer and I also work with UGC, in love with a camera lens and with a real talent for finding charm and beauty in the simplest parts of everyday life.",
       "Hoje meus nichos conversam com quem eu sou: skincare, maquiagem e o mundo da beleza sempre estiveram presentes no meu dia a dia, e sempre estive em busca de entender mais sobre o assunto.":"Today my niches match who I am: skincare, makeup and the beauty world have always been part of my everyday life, and I have always wanted to understand more about it.",
       "Além de criadora de conteúdo, tenho a rotina de uma CLT, o que conversa muito com a minha comunidade, que gosta de acompanhar como encaixar certas coisas na rotina corrida, sabe?! Aí entra o lifestyle, que gera uma identificação enorme com quem me acompanha.":"Besides being a content creator, I have a full time job, and that resonates a lot with my community, who like following how to fit things into a busy routine. That is where lifestyle comes in, and it creates a huge sense of identification with the people who follow me.",
       "Faço porque amo criar e me comunicar, e hoje conquistei uma comunidade incrível.":"I do it because I love creating and communicating, and today I have built an incredible community.",
@@ -1219,7 +1230,7 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
       "· Dados do Instagram Insights, setembro/2026. Nada estimado, nada inflado.":"· Data from Instagram Insights, September 2026. Nothing estimated, nothing inflated.",
       "Não é sobre quantos me seguem. É sobre quantos param, confiam e vão atrás 🌟":"It's not about how many follow me. It's about how many stop, trust and go after it 🌟",
       "· Por que Nano":"· Why Nano","por_que_nano.txt":"why_nano.txt",
-      "1.382 seguidores que":"1,382 followers who","confiam":"trust",
+      "1.388 seguidores que":"1,388 followers who","confiam":"trust",
       "valem mais do que 50 mil que ignoram":"are worth more than 50,000 who scroll past",
       "No universo da influência digital, tamanho não é o único critério que importa. Estudos de plataformas como Later, Hootsuite e Nielsen mostram que contas com menos de 10 mil seguidores costumam gerar taxas de engajamento":"In digital influence, size is not the only criterion that matters. Studies from platforms such as Later, Hootsuite and Nielsen show that accounts under 10,000 followers tend to generate engagement rates",
       "consideravelmente mais altas":"considerably higher",
@@ -1305,12 +1316,20 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
       "É só escrever pra":"Just write to","que eu respondo em até 48h 🌟":"and I'll reply within 48h 🌟",
       "enviar seu e-mail...":"send your email...",
       "Jheniffer Lima · Mídia Kit 2026 · 🌟":"Jheniffer Lima · Media Kit 2026 · 🌟",
-      "24.643":"24,643","64.779":"64,779","2.178":"2,178","1.382":"1,382",
+      "24.643":"24,643","64.779":"64,779","2.178":"2,178","1.388":"1,388",
       "8,8%":"8.8%","59,4%":"59.4%","74,5%":"74.5%","25,5%":"25.5%","54,1%":"54.1%",
       "23,7%":"23.7%","8,9%":"8.9%","7,9%":"7.9%","5,4%":"5.4%","36,6%":"36.6%",
       "10,6%":"10.6%","9,5%":"9.5%","3,7%":"3.7%","2,7%":"2.7%"
     },
-    es:{"Vamos conversar":"Hablemos","Ver portfólio":"Ver portafolio","Notas":"Notas","Lembretes":"Recordatorios","Álbuns":"Álbumes","Outubro 2026":"Octubre 2026",
+    es:{"Vamos conversar":"Hablemos",
+      "📌 Mídia Kit 2026":"📌 Media Kit 2026",
+      "O autocuidado cabe na rotina":"El autocuidado cabe en la rutina",
+      "de engajamento":"de engagement",
+      "a média do mercado fica entre 3% e 5%":"el promedio del mercado está entre 3% y 5%",
+      "A vida boa cabe na vida real 🌟":"La buena vida cabe en la vida real 🌟",
+      "Minha comunidade é formada por mulheres de 25 a 44 anos, com um público majoritariamente regional (59,4% na Grande Florianópolis), que buscam uma boa indicação e uma conversa de amiga 💖":"Mi comunidad está formada por mujeres de 25 a 44 años, con un público mayoritariamente regional (59,4% en la Gran Florianópolis), que buscan una buena recomendación y una charla de amigas 💖",
+      "Valores e pacotes sob consulta: me conta sua ideia que eu envio uma proposta pensada pra sua campanha em até 48h 🌟":"Valores y paquetes a consultar: cuéntame tu idea y te envío una propuesta pensada para tu campaña en hasta 48h 🌟",
+      "Ver portfólio":"Ver portafolio","Notas":"Notas","Lembretes":"Recordatorios","Álbuns":"Álbumes","Outubro 2026":"Octubre 2026",
       "Influenciadora & UGC Creator":"Influencer & UGC Creator",
       "Portfólio":"Portafolio","Processo":"Proceso","Contato":"Contacto",
       "engajamento":"engagement","Entrego":"Entregables","Humor":"Humor","Turismo":"Turismo",
@@ -1321,7 +1340,7 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
       "que a audiência realmente ouve e responde 💗":"que la audiencia realmente escucha y responde 💗",
       "conheça a Jheni":"conoce a Jheni","sobre_a_jheni.txt":"sobre_jheni.txt",
       "Pode me chamar de Jheni.":"Pueden llamarme Jheni.",
-      "Tenho 27 anos, sou de São José (a famosa Grande Floripa, em Santa Catarina). Sou influenciadora e trabalho também com UGC, apaixonada por uma lente de câmera e com um talento especial pra achar graça e beleza nas coisas simples da rotina.":"Tengo 27 años, soy de São José, en Santa Catarina, Brasil. Soy influencer y también trabajo con UGC, enamorada de una lente de cámara y con un talento especial para encontrarle gracia y belleza a las cosas simples de la rutina.",
+      "Tenho 28 anos, sou de São José (a famosa Grande Floripa), em Santa Catarina. Sou influenciadora e trabalho também com UGC, apaixonada por uma lente de câmera e com um talento especial pra achar graça e beleza nas coisas simples da rotina.":"Tengo 28 años, soy de São José, en Santa Catarina, Brasil. Soy influencer y también trabajo con UGC, enamorada de una lente de cámara y con un talento especial para encontrarle gracia y belleza a las cosas simples de la rutina.",
       "Hoje meus nichos conversam com quem eu sou: skincare, maquiagem e o mundo da beleza sempre estiveram presentes no meu dia a dia, e sempre estive em busca de entender mais sobre o assunto.":"Hoy mis nichos conversan con quien soy: el skincare, el maquillaje y el mundo de la belleza siempre estuvieron presentes en mi día a día, y siempre busqué entender más sobre el tema.",
       "Além de criadora de conteúdo, tenho a rotina de uma CLT, o que conversa muito com a minha comunidade, que gosta de acompanhar como encaixar certas coisas na rotina corrida, sabe?! Aí entra o lifestyle, que gera uma identificação enorme com quem me acompanha.":"Además de creadora de contenido, tengo la rutina de un empleo fijo, y eso conecta mucho con mi comunidad, a la que le gusta seguir cómo encajar ciertas cosas en la rutina apretada. Ahí entra el lifestyle, que genera una identificación enorme con quien me acompaña.",
       "Faço porque amo criar e me comunicar, e hoje conquistei uma comunidade incrível.":"Lo hago porque amo crear y comunicarme, y hoy conquisté una comunidad increíble.",
@@ -1497,6 +1516,7 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
       "Unboxing Dove UV Repair & Glow + Ferúlico":"Unboxing Dove UV Repair & Glow + Ferulic",
       "Unboxing produtos Dior":"Unboxing Dior products",
       "Vlog com produtos do dia":"Vlog with the products of the day",
+      "Pop up SHEIN no Floripa Shopping":"SHEIN pop up at Floripa Shopping",
       "Promoção Lual · Pastel da Semana":"Lual promo · Pastry of the Week",
       "Guava · Pincel Encaixe Perfeito":"Guava · Perfect Fit brush",
       "Pantene · Sérum Bambu":"Pantene · Bamboo serum",
@@ -1519,6 +1539,7 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
       "UGC · Apresentação do Produto":"UGC · Presentación del producto",
       "Unboxing produtos Dior":"Unboxing productos Dior",
       "Vlog com produtos do dia":"Vlog con los productos del día",
+      "Pop up SHEIN no Floripa Shopping":"Pop up de SHEIN en Floripa Shopping",
       "Promoção Lual · Pastel da Semana":"Promoción Lual · Pastel de la Semana",
       "Guava · Pincel Encaixe Perfeito":"Guava · Pincel Encaje Perfecto",
       "Pantene · Sérum Bambu":"Pantene · Sérum Bambú",
@@ -1810,7 +1831,7 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
     requestAnimationFrame(step);
   }
   setTimeout(function(){
-    onView([].slice.call(document.querySelectorAll('.mtile .n')),function(el){setTimeout(function(){count(el);},700);},{threshold:.3});
+    onView([].slice.call(document.querySelectorAll('.mtile .n, .kpi-n')),function(el){setTimeout(function(){count(el);},700);},{threshold:.3});
     onView([].slice.call(document.querySelectorAll('.stat .num')),count,{threshold:.5});
   },60);
 
@@ -1843,7 +1864,7 @@ footer{text-align:center;padding:2rem;font-size:.72rem;letter-spacing:.14em;text
   }
 
   /* checklist: confete ao marcar */
-  var cols=['#f25ca2','#2e7d5b','#c9a66b','#5de490'];
+  var cols=['#f25ca2','#2e7d5b','#f7a3ca','#8fc2ab'];
   document.querySelectorAll('.ios-item').forEach(function(b){
     b.addEventListener('click',function(){
       if(b.getAttribute('aria-pressed')!=='true') return;
@@ -1919,7 +1940,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',system-u
   font-size:.95rem;font-weight:600;color:#fff;background:linear-gradient(180deg,transparent,rgba(0,0,0,.55));}
 /* Notas */
 .notes-date{text-align:center;font-size:.72rem;font-weight:500;color:var(--ink-soft);margin:-.3rem 0 1rem;}
-.notes-body .about-p .drop{font-family:inherit;font-weight:700;font-size:1.35em;display:block;color:var(--ink);margin-bottom:.35rem;letter-spacing:-.01em;}
+.notes-body .about-p .drop{font-family:inherit;font-weight:700;font-size:1em;display:inline;color:var(--ink);margin:0;letter-spacing:0;}
 /* Tela inicial */
 .homescr{background:radial-gradient(500px 280px at 15% 0%,rgba(242,92,162,.14),transparent 70%),radial-gradient(500px 300px at 90% 100%,rgba(93,228,144,.16),transparent 70%);}
 .apps{grid-template-columns:repeat(5,1fr);max-width:none;}
@@ -2049,6 +2070,49 @@ footer.home{padding:2.6rem 1rem 1.2rem;text-transform:none;letter-spacing:0;}
 .vcta-s{font-size:.78rem;font-weight:700;color:#fff;background:#C9327A;border-radius:999px;padding:.45rem .95rem;white-space:nowrap;}
 @media(prefers-color-scheme:dark){.vcta{background:rgba(242,92,162,.12);color:#ff9ccb;border-color:rgba(242,92,162,.55);}.vcta:hover{background:rgba(242,92,162,.2);}}
 .cap-q{display:block;font-size:1.02rem;font-weight:600;line-height:1.4;text-wrap:pretty;}
+/* a troca da fonte manuscrita não deve deixar estes em itálico */
+.note,.polaroid .cap{font-style:normal;}
+/* ===== v3: hierarquia + respiro ===== */
+.hero-pos{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:1.32rem;line-height:1.3;color:var(--ink);margin-top:.55rem;max-width:44ch;
+  text-shadow:0 1px 10px rgba(251,245,240,.9);}
+.hero-kpi{display:inline-block;margin-top:1.5rem;padding:1.05rem 1.35rem 1rem;border-radius:22px;background:var(--glass-strong);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.7);box-shadow:var(--shadow-sm);}
+.kpi-n{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(3.2rem,8vw,4.4rem);line-height:.9;color:var(--pink);white-space:nowrap;}
+.kpi-row{display:flex;align-items:center;gap:1rem;}
+.kpi-txt{max-width:17ch;}
+.kpi-l{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--ink);}
+.kpi-c{font-size:.8rem;font-weight:600;line-height:1.35;color:var(--green);margin-top:.3rem;}
+.kpi-sub{display:flex;flex-wrap:wrap;gap:.35rem 1.1rem;margin-top:.85rem;padding-top:.75rem;border-top:1px solid var(--line);font-size:.72rem;color:var(--ink-soft);}
+.kpi-sub b{font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--ink);margin-right:.3rem;}
+.hero-motto{font-family:'Fraunces',serif;font-style:italic;font-size:1.05rem;color:#b03a72;margin-top:1.1rem;text-shadow:0 1px 10px rgba(251,245,240,.9);}
+.hero-copy>.hero-pos{animation-delay:.62s}.hero-copy>.hero-kpi{animation-delay:.72s}.hero-copy>.hero-motto{animation-delay:.9s}
+.stat-grid.v2{grid-template-columns:1.3fr 1fr 1fr;}
+.stat-grid.v2 .hero-stat{grid-row:span 2;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(160deg,#FFE3F0,#fff 70%);border-color:rgba(242,92,162,.25);padding:1.5rem 1.4rem;}
+.stat-grid.v2 .hero-stat .num{font-size:clamp(3.4rem,7vw,4.8rem);color:var(--pink);}
+.stat-grid.v2 .hero-stat .unit{font-size:.72rem;color:var(--ink);}
+.stat-grid.v2 .hero-stat .ctx{font-size:.9rem;font-weight:600;max-width:28ch;}
+.stat-grid.v2 .stat:not(.hero-stat) .num{font-size:1.55rem;color:var(--ink);}
+.community{font-family:'Fraunces',serif;font-style:italic;font-size:1.12rem;line-height:1.45;color:var(--ink);margin:1.6rem 0 1.1rem;max-width:60ch;}
+.price-note{margin:.9rem 0 0;padding:.8rem 1rem;border-radius:14px;background:#FFE3F0;color:#8a2357;font-size:.84rem;font-weight:600;line-height:1.45;}
+.contact-title{font-size:clamp(1.35rem,3.2vw,1.8rem);line-height:1.25;margin:.9rem 0 1.2rem;max-width:30ch;}
+@media(max-width:640px){
+  .stat-grid.v2{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .stat-grid.v2 .hero-stat{grid-column:1/-1;grid-row:auto;}
+  .hero-pos{font-size:1.15rem;}
+  .kpi-sub{font-size:.68rem;}
+}
+@media(prefers-color-scheme:dark){
+  .hero-pos,.hero-motto{text-shadow:0 1px 10px rgba(0,0,0,.7);}
+  .hero-motto{color:#ff9ccb;}
+  .hero-kpi{border-color:rgba(255,255,255,.1);}
+  .stat-grid.v2 .hero-stat{background:linear-gradient(160deg,rgba(242,92,162,.18),#2a232d 70%);border-color:rgba(242,92,162,.3);}
+  .stat-grid.v2 .hero-stat .unit{color:var(--ink);}
+  .price-note{background:rgba(242,92,162,.14);color:#ffc2de;}
+}
+@media(prefers-color-scheme:dark){
+  .app .icon{background:rgba(242,92,162,.16);}
+  .note.mint{background:rgba(79,192,141,.16);color:var(--ink);}
+}
 </style>
 <script>
 /* cartão "sua marca aqui": fecha o espaço vazio da grade em Recentes */
